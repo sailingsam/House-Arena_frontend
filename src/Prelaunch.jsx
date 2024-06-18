@@ -1,4 +1,6 @@
 import React from "react";
+import launchimg from "./assets/blurlaunch.png";
+import blaclogo from "./assets/black logo.png";
 
 function Prelaunch() {
   return (
@@ -7,7 +9,7 @@ function Prelaunch() {
         <div className="flex items-center justify-center w-full">
           <img
             className="w-52"
-            src="src\assets\black logo.png"
+            src={blaclogo}
             alt="house arena logo"
           />
         </div>
@@ -34,8 +36,8 @@ function Prelaunch() {
         </div>
         <div className="mt-14">
           <img
-            src="src\assets\blur launch.png"
-            className="w-full shadow-lg rounded-lg border"
+            src={launchimg}
+            className="w-full"
             alt=""
           />
         </div>
