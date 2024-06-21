@@ -6,7 +6,7 @@ export default () => {
       <div className="space-y-4 flex-1 sm:text-center lg:text-left">
         <h1 className="text-white font-bold text-4xl xl:text-5xl">
           Track the Glory of Your
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#ff8945] to-[#00f7ff]">
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#5e45ff] to-[#f6ff00]">
             {" "}
             Houses
           </span>

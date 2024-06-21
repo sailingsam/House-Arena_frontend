@@ -6,22 +6,9 @@ import tuskerlogo from "../../assets/logos/transparentbg/tusker logo wbg.png";
 export default () => {
   return (
     <section className="relative py-28 ">
-      <div className="relative z-10 max-w-screen-xl mx-auto px-4 text-gray-300 justify-between gap-24 lg:flex md:px-8">
-      <div className="mt-12 lg:mt-0">
+      <div className="relative z-10 max-w-screen-xl mx-auto px-4 text-gray-300 justify-between gap-24 lg:flex lg:justify-evenly md:px-8">
+        <div className="mt-12 lg:mt-0">
           <ul className="grid gap-8 sm:grid-cols-2">
-            {/* {features.map((feature, idx) => (
-              <li key={idx} className="flex gap-4">
-                <div className="flex items-center justify-center w-12 h-12 rounded-full bg-gradient-to-r from-lime-500 to-lime-400">
-                  {feature.icon}
-                </div>
-                <div>
-                  <h4 className="text-lg font-semibold text-white">
-                    {feature.title}
-                  </h4>
-                  <p className="mt-2">{feature.desc}</p>
-                </div>
-              </li>
-            ))} */}
             <li className="flex gap-4">
               <KongCard />
             </li>
@@ -36,9 +23,13 @@ export default () => {
             </li>
           </ul>
         </div>
-        <div className="max-w-lg">
-          <h3 className="text-white text-3xl font-semibold sm:text-4xl">
-            Unity through Diversity: SST's Houses
+        <div className="max-w-lg text-left">
+          <h3 className="text-white font-bold text-4xl font-semibold sm:text-4xl xl:text-5xl">
+            Unity through Diversity:
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#fd5b5b] to-[#15ff00]">
+              {" "}
+              SST's Houses
+            </span>
           </h3>
           <p className="mt-3">
             To encourage a culture of healthy competition and camaraderie, the
