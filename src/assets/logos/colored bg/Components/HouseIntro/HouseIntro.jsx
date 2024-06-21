@@ -13,6 +13,7 @@ export default () => {
         bgGradient: "from-blue-400 to-blue-800",
         textGradient: "from-blue-500 to-blue-500",
         textColor: "text-gray-600 dark:text-blue-500",
+        themecolor: "blue",
       },
     },
     {
@@ -66,19 +67,19 @@ export default () => {
           </p>
         </div>
         <div className="mt-12 lg:mt-0">
-          <ul className="flex justify-center gap-4 sw:gap-20">
+          <ul className="flex justify-center gap-20">
             {houseData.map((house, index) => (
-              <li key={index} className="flex gap-4 w-16 sm:w-56 justify-center group cursor-pointer">
+              <li key={index} className="flex gap-4 group cursor-pointer">
                 <div className="flex flex-col justify-center items-center gap-5 group mx-2 cursor-pointer">
                   <div
-                    className={`bg-gradient-to-r w-16 sm:w-44 aspect-square items-center justify-center flex ${house.themecss.bgGradient}`}
+                    className={`bg-gradient-to-r w-44 sm:w-44 aspect-square items-center justify-center flex ${house.themecss.bgGradient}`}
                   >
                     <img
-                      className={`group-hover:ease-in-out transition duration-700 group-hover:duration-1000 cursor-pointer object-center object-cover group-hover:scale-110 sm:group-hover:scale-125 w-16 sm:w-40 aspect-square rotate-0  group-hover:stroke-${
+                      className={`group-hover:ease-in-out transition duration-700 group-hover:duration-1000 cursor-pointer object-center object-cover group-hover:scale-110 sm:group-hover:scale-150 w-16 sm:w-40 aspect-square rotate-0 group-hover:-rotate-[360deg] group-hover:stroke-${
                         house.themecss.textGradient.split("-")[1]
                       }-500 fill-${
                         house.themecss.textGradient.split("-")[1]
-                      }-500  group-hover:-skew-y-12 group-hover:skew-x-12`}
+                      }-500 group-hover:-translate-y-12 group-hover:-skew-y-12 group-hover:skew-x-12`}
                       fill="currentColor"
                       src={house.logo}
                       alt={`${house.name} logo`}
