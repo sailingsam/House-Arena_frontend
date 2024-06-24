@@ -15,14 +15,6 @@ function Footer() {
           href: "javascript:void()",
           name: "Support",
         },
-        {
-          href: "javascript:void()",
-          name: "Documentation",
-        },
-        {
-          href: "javascript:void()",
-          name: "Pricing",
-        },
       ],
     },
     {
@@ -63,10 +55,10 @@ function Footer() {
             </a>
           </h3>
         </div>
-        <div className="flex-1 mt-5 space-y-6 justify-between sm:flex md:space-y-0">
+        <div className="flex-1 space-y-6 justify-between sm:flex md:space-y-0">
           {footerNavs.map((item, idx) => (
             <ul className="space-y-4 text-gray-300" key={idx}>
-              <h4 className="text-gray-200 font-semibold sm:pb-2">
+              <h4 className="text-gray-200 font-semibold mt-10 sm:pb-2">
                 {item.label}
               </h4>
               {item.items.map((el, idx) => (
@@ -83,7 +75,7 @@ function Footer() {
           ))}
           <MyProfileCard />
         </div>
-        <div className="mt-10 py-10 border-t border-gray-700 items-center justify-center sm:flex">
+        <div className="py-5 border-t border-gray-700 items-center justify-center sm:flex">
           <p className="text-gray-300">Connect with me:</p>
           <div className="flex items-center gap-x-6 text-gray-400 ml-3">
             <a href="javascript:void()">

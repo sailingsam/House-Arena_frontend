@@ -75,9 +75,9 @@ export default () => {
                   >
                     <img
                       className={`group-hover:ease-in-out transition duration-700 group-hover:duration-1000 cursor-pointer object-center object-cover group-hover:scale-110 sm:group-hover:scale-125 w-16 sm:w-40 aspect-square rotate-0  group-hover:stroke-${
-                        house.themecss.textGradient.split("-")[1]
+                        house.themecss.textGradient.split("-")[2]
                       }-500 fill-${
-                        house.themecss.textGradient.split("-")[1]
+                        house.themecss.textGradient.split("-")[2]
                       }-500  group-hover:-skew-y-12 group-hover:skew-x-12`}
                       fill="currentColor"
                       src={house.logo}
@@ -101,7 +101,7 @@ export default () => {
                         strokeMiterlimit="2"
                         viewBox="0 0 24 24"
                         xmlns="http://www.w3.org/2000/svg"
-                        className={`text-gray-600 font-semibold text-lg sm:text-xl transition-all duration-300 group-hover:transition-all group-hover:duration-300 group-hover:text-gray-200 fill-${
+                        className={`font-semibold text-lg sm:text-xl transition-all duration-300 group-hover:transition-all group-hover:duration-300 group-hover:text-gray-200 fill-${
                           house.themecss.textGradient.split("-")[1]
                         }-500 group-hover:bg-${
                           house.themecss.textGradient.split("-")[1]
