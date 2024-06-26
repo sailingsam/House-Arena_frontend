@@ -1,10 +1,27 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import App from './App.jsx'
-import './index.css'
+import React from "react";
+import ReactDOM from "react-dom/client";
+import App from "./HomePage.jsx";
+import "./index.css";
+import Layout from "./Layout.jsx";
+import {
+  Route,
+  createBrowserRouter,
+  RouterProvider,
+  createRoutesFromElements,
+} from "react-router-dom";
+import Leaderboard from "./Components/LEpage/Leaderboard.jsx";
 
-ReactDOM.createRoot(document.getElementById('root')).render(
+const router = createBrowserRouter(
+  createRoutesFromElements(
+    <Route path="/" element={<Layout />}>
+      <Route path="" element={<App />} />
+      <Route path="leaderboard&events" element={<Leaderboard />} />
+    </Route>
+  )
+);
+
+ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-)
+    <RouterProvider router={router} />
+  </React.StrictMode>
+);

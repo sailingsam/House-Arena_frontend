@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import "./Navheader.css";
 import horizontalLogo from "../../assets/horizontalLogo.png";
+import { NavLink } from "react-router-dom";
 
 function Navheader() {
   const [state, setState] = useState(false);
@@ -8,31 +9,14 @@ function Navheader() {
 
   // Replace javascript:void(0) path with your path
   const navigation = [
-    { title: "LeaderBoard", path: "javascript:void(0)" },
-    { title: "Events", path: "javascript:void(0)" },
-    { title: "House Gates", path: "javascript:void(0)" },
+    { title: "Home", path: "/" },
+    { title: "LeaderBoard & Events", path: "/leaderboard&events" },
+    // { title: "House Gates", path: "javascript:void(0)" },
   ];
 
-  useEffect(() => {
-    const body = document.body;
-
-    // Disable scrolling
-    const customBodyStyle = ["overflow-hidden", "lg:overflow-visible"];
-    if (state) body.classList.add(...customBodyStyle);
-    // Enable scrolling
-    else body.classList.remove(...customBodyStyle);
-
-    // Sticky strick
-    const customStyle = ["sticky-nav", "fixed", "border-b"];
-    window.onscroll = () => {
-      if (window.scrollY > 80) navRef.current.classList.add(...customStyle);
-      else navRef.current.classList.remove(...customStyle);
-    };
-  }, [state]);
-
   return (
-    <nav ref={navRef} className="bg-black w-full top-0 z-20">
-      <div className="items-center px-4 max-w-screen-xl mx-auto md:px-8 lg:flex">
+    <nav ref={navRef} className="bg-black w-full top-0 z-20 sticky">
+      <div className="items-center mx-10 px-20 max-w-screen-2xl mx-auto md:px-8 lg:flex">
         <div className="flex items-center justify-between py-3 lg:py-3 lg:block">
           <a href="javascript:void(0)">
             <img
@@ -151,8 +135,9 @@ function Navheader() {
             <ul className="justify-center items-center gap-5 space-y-8 lg:flex lg:space-x-6 lg:space-y-0">
               {navigation.map((item, idx) => {
                 return (
-                  <li key={idx} className="text-white hover:text-indigo-600">
-                    <a href={item.path}>{item.title}</a>
+                  <li key={idx} className="text-gray-400">
+                    {/* <a href={item.path}>{item.title}</a> */}
+                    <NavLink to={item.path} className={({isActive}) => `${isActive ? "text-white" : "text-gray-500"}`}>{item.title}</NavLink>
                   </li>
                 );
               })}

@@ -1,4 +1,4 @@
-import allhouse from "../../assets/logos/aigenerated/p.png";
+import allhouse from "../../../assets/logos/aigenerated/p.png";
 
 export default () => {
   return (

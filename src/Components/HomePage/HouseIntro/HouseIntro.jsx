@@ -1,7 +1,7 @@
-import konglogo from "../../assets/logos/transparentbg/kong logo wbg.png";
-import leologo from "../../assets/logos/transparentbg/leo logo wbg.png";
-import phoenixlogo from "../../assets/logos/transparentbg/phoenix logo wbg.png";
-import tuskerlogo from "../../assets/logos/transparentbg/tusker logo wbg.png";
+import konglogo from "../../../assets/logos/transparentbg/kong logo wbg.png";
+import leologo from "../../../assets/logos/transparentbg/leo logo wbg.png";
+import phoenixlogo from "../../../assets/logos/transparentbg/phoenix logo wbg.png";
+import tuskerlogo from "../../../assets/logos/transparentbg/tusker logo wbg.png";
 
 export default () => {
   const houseData = [

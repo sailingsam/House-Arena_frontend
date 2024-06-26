@@ -12,7 +12,7 @@ export default () => {
     autoplay: true,
     speed: 2000,
     autoplaySpeed: 2000,
-    cssEase: "linear",
+    cssEase: "linear" 
   };
   return (
     <div className="flex justify-center items-center my-auto">
