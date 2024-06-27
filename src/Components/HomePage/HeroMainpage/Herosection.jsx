@@ -2,7 +2,7 @@ import allhouse from "../../../assets/logos/aigenerated/p.png";
 
 export default () => {
   return (
-    <section className="mt-24 mx-auto max-w-screen-xl pb-12 px-4 items-center lg:flex md:px-8">
+    <section className="mt-10 md:mt-14 lg:mt-20 mx-auto max-w-screen-xl pb-12 px-4 items-center md:flex md:items-center md:px-8">
       <div className="space-y-4 flex-1 sm:text-center lg:text-left">
         <h1 className="text-white font-bold text-4xl xl:text-5xl">
           Track the Glory of Your
@@ -31,8 +31,8 @@ export default () => {
           </a>
         </div>
       </div>
-      <div className="flex-1 text-center mt-7 lg:mt-0 lg:ml-3">
-        <img src={allhouse} className="w-4 mx-auto sm:w-10/12  lg:w-80" />
+      <div className="flex-1 text-center mt-7 md:mt-0 lg:mt-0 lg:ml-3">
+        <img src={allhouse} className="w-3/4 mx-auto sm:w-80" />
       </div>
     </section>
   );

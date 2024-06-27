@@ -48,7 +48,7 @@ export default () => {
   ];
 
   return (
-    <section className="relative py-28 ">
+    <section className="relative py-20">
       <div className="relative z-10 max-w-screen-xl mx-auto px-4 text-gray-300 justify-between gap-24 md:px-8">
         <div className="max-w-screen-xl text-center mb-12">
           <h3 className="text-white font-bold text-4xl font-semibold sm:text-4xl xl:text-5xl">
@@ -66,15 +66,18 @@ export default () => {
           </p>
         </div>
         <div className="mt-12 lg:mt-0">
-          <ul className="flex justify-center gap-4 sw:gap-20">
+          <ul className="flex justify-center items-start gap-5 sm:gap-10 md:gap-12 lg:gap-16">
             {houseData.map((house, index) => (
-              <li key={index} className="flex gap-4 w-16 sm:w-56 justify-center group cursor-pointer">
-                <div className="flex flex-col justify-center items-center gap-5 group mx-2 cursor-pointer">
+              <li
+                key={index}
+                className="flex  justify-center group cursor-pointer"
+              >
+                <div className="flex flex-col justify-center items-center gap-5 group mx-2 cursor-pointer w-[70px] sm:w-20 md:w-32 lg:w-44">
                   <div
-                    className={`bg-gradient-to-r w-16 sm:w-44 aspect-square items-center justify-center flex ${house.themecss.bgGradient}`}
+                    className={`relative bg-gradient-to-r w-[70px] sm:w-20 md:w-32 lg:w-44 aspect-square items-center justify-center flex ${house.themecss.bgGradient}`}
                   >
                     <img
-                      className={`group-hover:ease-in-out transition duration-700 group-hover:duration-1000 cursor-pointer object-center object-cover group-hover:scale-110 sm:group-hover:scale-125 w-16 sm:w-40 aspect-square rotate-0  group-hover:stroke-${
+                      className={`group-hover:ease-in-out transition duration-700 group-hover:duration-1000 cursor-pointer object-center object-cover group-hover:scale-110 sm:group-hover:scale-125 w-3/4 aspect-square rotate-0 group-hover:stroke-${
                         house.themecss.textGradient.split("-")[2]
                       }-500 fill-${
                         house.themecss.textGradient.split("-")[2]
@@ -85,9 +88,9 @@ export default () => {
                     />
                   </div>
                   <div className="flex flex-row place-items-center place-content-between">
-                    <div className="flex flex-col gap-1">
+                    <div className="flex flex-col justify-between gap-1">
                       <p
-                        className={`font-semibold text-lg sm:text-xl relative after:scale-x-0 after:h-0.5 after:bottom-0 after:left-0 after:absolute after:origin-bottom-left after:transform after:ease-in-out after:duration-500 cursor-pointer w-full after:w-full group-hover:after:scale-x-100 group-hover:after:origin-bottom-left after:${house.themecss.textGradient} text-gray-600 dark:${house.themecss.textColor}`}
+                        className={`font-semibold text-md lg:text-xl relative after:scale-x-0 after:h-0.5 after:bottom-0 after:left-0 after:absolute after:origin-bottom-left after:transform after:ease-in-out after:duration-500 cursor-pointer w-full after:w-full group-hover:after:scale-x-100 group-hover:after:origin-bottom-left after:${house.themecss.textGradient} text-gray-600 dark:${house.themecss.textColor}`}
                       >
                         {house.name}
                       </p>
@@ -101,7 +104,7 @@ export default () => {
                         strokeMiterlimit="2"
                         viewBox="0 0 24 24"
                         xmlns="http://www.w3.org/2000/svg"
-                        className={`font-semibold text-lg sm:text-xl transition-all duration-300 group-hover:transition-all group-hover:duration-300 group-hover:text-gray-200 fill-${
+                        className={`font-semibold text-lg fill-white sm:text-xl transition-all duration-300 group-hover:transition-all group-hover:duration-300 group-hover:text-gray-200 fill-${
                           house.themecss.textGradient.split("-")[1]
                         }-500 group-hover:bg-${
                           house.themecss.textGradient.split("-")[1]
