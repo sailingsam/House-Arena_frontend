@@ -4,10 +4,9 @@ import horizontalLogo from "../../assets/horizontalLogo.png";
 import { NavLink } from "react-router-dom";
 
 function Navheader() {
-  const [state, setState] = useState(false);
+  const [state, setState] = useState(true);
   const navRef = useRef();
 
-  // Replace javascript:void(0) path with your path
   const navigation = [
     { title: "Home", path: "/" },
     { title: "LeaderBoard & Events", path: "/leaderboard&events" },
@@ -136,7 +135,6 @@ function Navheader() {
               {navigation.map((item, idx) => {
                 return (
                   <li key={idx} className="text-gray-400">
-                    {/* <a href={item.path}>{item.title}</a> */}
                     <NavLink to={item.path} className={({isActive}) => `${isActive ? "text-white" : "text-gray-500"}`}>{item.title}</NavLink>
                   </li>
                 );

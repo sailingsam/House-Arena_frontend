@@ -1,88 +1,71 @@
 export default () => {
   const tableItems = [
     {
-      houseid: "1",
+      avatar:
+        "https://images.unsplash.com/photo-1511485977113-f34c92461ad9?ixlib=rb-1.2.1&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&ixid=eyJhcHBfaWQiOjE3Nzg0fQ",
       name: "House of Phoenix",
-      points: "$35.000",
+      email: "liamjames@example.com",
+      phone_nimber: "+1 (555) 000-000",
+      position: "Software engineer",
+      salary: "$100K",
     },
     {
-      name: "Window wrapper",
-      date: "Oct 12, 2023",
-      status: "Active",
-      price: "$12.000",
-      plan: "Monthly subscription",
+      avatar: "https://randomuser.me/api/portraits/men/86.jpg",
+      name: "House of Kong",
+      email: "oliviaemma@example.com",
+      phone_nimber: "+1 (555) 000-000",
+      position: "Product designer",
+      salary: "$90K",
     },
     {
-      name: "Unity loroin",
-      date: "Oct 22, 2023",
-      status: "Archived",
-      price: "$20.000",
-      plan: "Annually subscription",
+      avatar: "https://randomuser.me/api/portraits/women/79.jpg",
+      name: "House of Leo",
+      salary: "$80K",
     },
     {
-      name: "Background remover",
-      date: "Jan 5, 2023",
-      status: "Active",
-      price: "$5.000",
-      plan: "Monthly subscription",
-    },
+      avatar: "https://api.uifaces.co/our-content/donated/xZ4wg2Xj.jpg",
+      name: "House of Tusker",
+      email: "henrytheodore@example.com",
+      phone_nimber: "+1 (555) 000-000",
+      position: "Laravel engineer",
+      salary: "$120K",
+    }
   ];
 
   return (
-    <div className="max-w-screen-xl mx-auto px-4 md:px-8 mt-10">
-      <div className="items-center justify-between md:flex">
-        <div className="max-w-lg">
-          <h3 className="text-white text-xl font-semibold sm:text-2xl">
-            Leader Board
-          </h3>
-        </div>
-        <div className="mt-3 md:mt-0">
-          <a
-            href="javascript:void(0)"
-            className="inline-block px-4 py-2 text-white duration-150 font-medium bg-indigo-600 rounded-full hover:bg-indigo-500 active:bg-indigo-700 md:text-sm"
-          >
-            Share
-          </a>
-        </div>
+    <div className="max-w-screen-xl mx-auto px-4 md:px-8">
+      <div className="max-w-lg">
+        <h3 className="text-gray-800 text-xl font-bold sm:text-2xl">
+          Current Leader Board
+        </h3>
+        <p className="text-gray-600 mt-2">
+          Lorem Ipsum is simply dummy text of the printing and typesetting
+          industry.
+        </p>
       </div>
-      <div className="mt-3 relative h-max overflow-auto">
-        <table className="w-full table-auto text-sm text-left">
-          <thead className="text-white font-sans border-b">
+      <div className="mt-12 shadow-sm border rounded-lg w-max overflow-x-auto">
+        <table className="w-full  table-auto text-sm text-left">
+          <thead className="bg-gray-50 text-gray-600 font-medium border-b">
             <tr>
-              <th className="py-3 pr-6">House</th>
-              <th className="py-3 pr-6">date</th>
-              <th className="py-3 pr-6">status</th>
-              <th className="py-3 pr-6">Purchase</th>
-              <th className="py-3 pr-6">price</th>
-              <th className="py-3 pr-6"></th>
+              <th className="py-3 px-6">House</th>
+              <th className="py-3 px-6">Points</th>
             </tr>
           </thead>
           <tbody className="text-gray-600 divide-y">
             {tableItems.map((item, idx) => (
               <tr key={idx}>
-                <td className="pr-6 py-4 whitespace-nowrap">{item.name}</td>
-                <td className="pr-6 py-4 whitespace-nowrap">{item.date}</td>
-                <td className="pr-6 py-4 whitespace-nowrap">
-                  <span
-                    className={`px-3 py-2 rounded-full font-semibold text-xs ${
-                      item.status == "Active"
-                        ? "text-green-600 bg-green-50"
-                        : "text-blue-600 bg-blue-50"
-                    }`}
-                  >
-                    {item.status}
-                  </span>
+                <td className="flex items-center gap-x-3 py-3 px-6 whitespace-nowrap">
+                  <img src={item.avatar} className="w-10 h-10 rounded-full" />
+                  <div>
+                    <span className="block text-gray-700 text-sm font-medium">
+                      {item.name}
+                    </span>
+                    <span className="block text-gray-700 text-xs">
+                      {item.email}
+                    </span>
+                  </div>
                 </td>
-                <td className="pr-6 py-4 whitespace-nowrap">{item.plan}</td>
-                <td className="pr-6 py-4 whitespace-nowrap">{item.price}</td>
-                <td className="text-right whitespace-nowrap">
-                  <a
-                    href="javascript:void()"
-                    className="py-1.5 px-3 text-gray-600 hover:text-gray-500 duration-150 hover:bg-gray-50 border rounded-lg"
-                  >
-                    Manage
-                  </a>
-                </td>
+                <td className="px-6 py-4 whitespace-nowrap">{item.salary}</td>
               </tr>
             ))}
           </tbody>

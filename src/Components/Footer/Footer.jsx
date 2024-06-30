@@ -1,6 +1,8 @@
 import React from "react";
 import "./MyProfileCard";
 import MyProfileCard from "./MyProfileCard";
+import "./ProjectInfo";
+import ProjectInfo from "./ProjectInfo";
 
 function Footer() {
   const footerNavs = [
@@ -38,6 +40,8 @@ function Footer() {
         },
       ],
     },
+    // "I made this Project as part of my Buildspace N&W S5 project as well as my MERN project",
+    
   ];
 
   return (
@@ -56,6 +60,7 @@ function Footer() {
           </h3>
         </div>
         <div className="flex-1 space-y-6 justify-between sm:flex md:space-y-0">
+          <ProjectInfo />
           {footerNavs.map((item, idx) => (
             <ul className="space-y-4 text-gray-300" key={idx}>
               <h4 className="text-gray-200 font-semibold mt-10 sm:pb-2">
