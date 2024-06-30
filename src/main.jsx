@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import HomePage from "./HomePage.jsx";
+import HomePage from "./Pages/HomePage/HomePage.jsx";
 import "./index.css";
 import Layout from "./Layout.jsx";
 import {
@@ -9,7 +9,7 @@ import {
   RouterProvider,
   createRoutesFromElements,
 } from "react-router-dom";
-import Leaderboard from "./Components/LEpage/Leaderboard.jsx";
+import Leaderboard from "./Pages/LEpage/LeaderboardAndEvents.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
