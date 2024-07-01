@@ -1,4 +1,4 @@
-import Leaderboard from "./LeaderBoardSection/LeaderboardSection";
+import LeaderboardSection from "./LeaderBoardSection/LeaderboardSection";
 import EventsSection from "./EventsSection/EventsSection";
 
 export default () => {
@@ -6,7 +6,7 @@ export default () => {
 
   return (
     <div>
-      <Leaderboard />
+      <LeaderboardSection />
       <EventsSection />
     </div>
   );

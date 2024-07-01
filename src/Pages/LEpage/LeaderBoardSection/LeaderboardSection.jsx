@@ -30,7 +30,7 @@ export default () => {
         <h1 className="text-white font-bold text-4xl xl:text-5xl">
           Current
           <br />
-          <span className="text-7xl text-transparent bg-clip-text bg-gradient-to-r from-[#ff32ad] to-[#8800ff]">
+          <span className="md:text-6xl lg:text-7xl text-transparent bg-clip-text bg-gradient-to-r from-[#ff32ad] to-[#8800ff]">
             {" "}
             LeaderBoard
           </span>
@@ -67,6 +67,13 @@ export default () => {
           </table>
         </div>
       </div>
+      <div
+        className="absolute inset-0 max-w-md mx-auto h-52 blur-[118px]"
+        style={{
+          background:
+            "linear-gradient(152.92deg, rgba(192, 132, 252, 0.2) 4.54%, rgba(232, 121, 249, 0.26) 34.2%, rgba(192, 132, 252, 0.1) 77.55%)",
+        }}
+      ></div>
     </section>
   );
 };
