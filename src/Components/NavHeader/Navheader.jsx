@@ -68,10 +68,16 @@ function Navheader() {
             state ? "h-screen pb-20 overflow-auto pr-4" : "hidden"
           }`}
         >
+          {/* below 2 div are in reverse order (flex-row-reverse)*/}
           <div>
+            {" "}
+            {/* github logo */}
             <ul className="flex items-center flex-col-reverse space-x-0 lg:space-x-6 lg:flex-row">
               <li className="mt-8 mb-8 lg:mt-0 lg:mb-0">
-                <a href="javascript:void(0)">
+                <a
+                  href="https://github.com/sailingsam/house_arena_react-vite"
+                  target="_blank"
+                >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     height="50"
@@ -121,12 +127,16 @@ function Navheader() {
                 </a>
               </li>
               <li className="mt-8 lg:mt-0">
-                <a
+                {/* <a
                   href="javascript:void(0)"
                   className="py-3 px-4 text-center text-white bg-indigo-600 hover:bg-indigo-700 rounded-md shadow block lg:inline"
                 >
                   Sign Up
-                </a>
+                </a> */}
+                <NavLink
+                  to="/login"
+                  className="py-3 px-4 text-center text-white bg-indigo-600 hover:bg-indigo-700 rounded-md shadow block lg:inline"
+                ><span>Log In</span></NavLink>
               </li>
             </ul>
           </div>
@@ -135,7 +145,14 @@ function Navheader() {
               {navigation.map((item, idx) => {
                 return (
                   <li key={idx} className="text-gray-400">
-                    <NavLink to={item.path} className={({isActive}) => `${isActive ? "text-white" : "text-gray-500"}`}>{item.title}</NavLink>
+                    <NavLink
+                      to={item.path}
+                      className={({ isActive }) =>
+                        `${isActive ? "text-white" : "text-gray-500"}`
+                      }
+                    >
+                      {item.title}
+                    </NavLink>
                   </li>
                 );
               })}

@@ -1,4 +1,5 @@
 import allhouse from "../../../assets/logos/aigenerated/p.png";
+import { NavLink } from "react-router-dom";
 
 export default () => {
   return (
@@ -17,14 +18,16 @@ export default () => {
           individul houses.
         </p>
         <div className="pt-10 items-center justify-center space-y-3 sm:space-x-6 sm:space-y-0 sm:flex lg:justify-start">
-          <a
+          {/* <a
             href="javascript:void(0)"
             className="px-7 py-3 w-full bg-white text-gray-800 text-center rounded-md shadow-md block sm:w-auto"
           >
             LeaderBoard
-          </a>
+          </a> */}
+          <NavLink to="/leaderboard&events" className="px-7 py-3 bg-white text-black text-center rounded-md block w-auto"><span >LeaderBoard & Past Events</span></NavLink>
           <a
-            href="javascript:void(0)"
+            href="https://github.com/sailingsam/house_arena_react-vite"
+            target="_blank"
             className="px-7 py-3 w-full bg-gray-700 text-gray-200 text-center rounded-md block sm:w-auto"
           >
             Contribute
