@@ -27,7 +27,7 @@ export default () => {
             href="javascript:void(0)"
             className="px-7 py-3 w-full bg-gray-700 text-gray-200 text-center rounded-md block sm:w-auto"
           >
-            Events scores
+            Contribute
           </a>
         </div>
       </div>

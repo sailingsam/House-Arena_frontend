@@ -25,7 +25,7 @@ export default () => {
     },
   ];
   return (
-    <section className="mt-10 md:mt-14 lg:mt-20 mx-auto max-w-screen-xl pb-12 px-4 items-center md:flex md:items-center md:px-8">
+    <section className="mt-10 md:mt-14 lg:mt-10 mx-auto max-w-screen-xl pb-12 px-4 items-center md:flex md:items-center md:px-8">
       <div className="space-y-4 m-auto text-center lg:text-left lg:max-w-md">
         <h1 className="text-white font-bold text-4xl xl:text-5xl">
           Current
@@ -36,13 +36,12 @@ export default () => {
           </span>
         </h1>
         <p className="text-gray-300 max-w-lg leading-relaxed mx-auto lg:ml-0">
-        Celebrate your house's achievements and strive for excellence!
+          Celebrate your house's achievements and strive for excellence!
         </p>
       </div>
       <div className="m-auto text-center mt-7 md:mt-0 lg:mt-0">
-        {/* <img src={allhouse} className="w-3/4 mx-auto sm:w-80" /> */}
-        <div className="mt-12 shadow-sm border rounded-lg w-max overflow-x-auto m-auto">
-          <table className="w-full  table-auto text-sm text-left">
+        <div className="mt-12 shadow-sm border max-w-fit rounded-lg  overflow-x-auto m-auto">
+          <table className="table-auto text-sm text-left">
             <thead className="bg-gray-50 text-black text-xl border-b">
               <tr>
                 <th className="py-3 px-6">House</th>
@@ -55,12 +54,12 @@ export default () => {
                   <td className="flex items-center gap-x-3 py-3 px-6 mr-10 whitespace-nowrap">
                     <img src={item.avatar} className="w-10 h-10 rounded-full" />
                     <div>
-                      <span className="block">
-                        {item.name}
-                      </span>
+                      <span className="">{item.name}</span>
                     </div>
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-center">{item.salary}</td>
+                  <td className="px-6 py-4 whitespace-nowrap text-center">
+                    {item.salary}
+                  </td>
                 </tr>
               ))}
             </tbody>
