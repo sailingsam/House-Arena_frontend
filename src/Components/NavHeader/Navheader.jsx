@@ -71,8 +71,9 @@ function Navheader() {
           {/* below 2 div are in reverse order (flex-row-reverse)*/}
           <div>
             {" "}
-            {/* github logo */}
+            
             <ul className="flex items-center flex-col-reverse space-x-0 lg:space-x-6 lg:flex-row">
+              {/* github logo */}
               <li className="mt-8 mb-8 lg:mt-0 lg:mb-0">
                 <a
                   href="https://github.com/sailingsam/house_arena_react-vite"
@@ -118,14 +119,16 @@ function Navheader() {
                   </svg>
                 </a>
               </li>
+              {/* signup */}
               <li className="mt-4 lg:mt-0">
                 <a
                   href="javascript:void(0)"
                   className="py-3 px-4 text-center border text-white hover:text-indigo-600 rounded-md block lg:inline lg:border-0"
                 >
-                  Login
+                  Sign up
                 </a>
               </li>
+              {/* github logo */}
               <li className="mt-8 lg:mt-0">
                 {/* <a
                   href="javascript:void(0)"

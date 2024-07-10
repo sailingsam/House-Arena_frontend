@@ -1,7 +1,6 @@
 import HouseArenaLogo from "../../assets/HAwhiteWithoutBG.png";
 import HouseArenaBlackLogo from "../../assets/HAblackWithoutBG.png";
 import { NavLink } from "react-router-dom";
-import OAuth from "./OAuth";
 
 export default () => {
   return (
@@ -55,27 +54,17 @@ export default () => {
       </div>
       <div className="flex-1 flex items-center justify-center h-screen bg-white">
         <div className="w-full max-w-md space-y-4 px-10  text-gray-600 sm:px-0">
-          <div className="">
-            <img
-              src={HouseArenaBlackLogo}
-              width={150}
-              className="lg:hidden m-auto"
-            />
-            <div className="flex justify-around items-center mt-5 space-y-2">
-              <h3 className="text-gray-800 text-2xl font-bold sm:text-3xl mb-10">
-                Log in
-              </h3>
-            </div>
-            <span className="font-bold mb-5">
-              Disclamer: <br />
-              <span className="font-normal">{`only use Scaler Gmail (@sst.scaler.com or @scaler.com)`}</span>
-            </span>
-            <OAuth />
-          </div>
-          <div className="flex justify-center">
+          <img
+            src={HouseArenaBlackLogo}
+            width={150}
+            className="lg:hidden m-auto"
+          />
+          <div className="flex-col text-center justify-around items-center space-y-2">
+            <h3 className="text-gray-800 text-2xl font-bold sm:text-3xl mb-2">
+              Log in
+            </h3>
             <p className="">
               What! You have not yet registered!{" "}
-              {/*<a href="javascript:void(0)" className="font-medium text-indigo-600 hover:text-indigo-500">Sign Up NOW</a>*/}
               <NavLink
                 to="/signup"
                 className="font-medium text-indigo-600 hover:text-indigo-500 border-2 border-gray-400 px-1"
@@ -84,6 +73,35 @@ export default () => {
               </NavLink>
             </p>
           </div>
+          <form onSubmit={(e) => e.preventDefault()} className="space-y-5">
+            <div>
+              <label className="font-medium">
+                <span className="text-red-600">* </span>Email
+              </label>
+              <input
+                type="email"
+                required
+                placeholder="@sst.scaler.com / @scaler.com"
+                className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-full"
+              />
+            </div>
+            <div>
+              <label className="font-medium">
+                <span className="text-red-600">* </span>Password
+              </label>
+              <input
+                type="password"
+                required
+                placeholder="********"
+                className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-full"
+              />
+            </div>
+            <div className="flex-col justify-center text-center">
+              <button className="max-w-fit px-4 py-2 text-white font-medium bg-indigo-600 hover:bg-indigo-500 active:bg-indigo-600 rounded-full duration-150">
+                Let's Dive In
+              </button>
+            </div>
+          </form>
         </div>
       </div>
     </main>
