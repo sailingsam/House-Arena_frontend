@@ -16,7 +16,7 @@ function Navheader() {
 
   return (
     <nav ref={navRef} className="bg-black w-full top-0 z-20 sticky">
-      <div className="items-center mx-10 px-5 md:px-8 max-w-screen-2xl mx-auto lg:flex">
+      <div className="items-center mx-12 px-5 md:px-8 max-w-screen-2xl mx-auto lg:flex">
         <div className="flex items-center justify-between lg:block">
           <a href="javascript:void(0)">
             <img
@@ -119,12 +119,16 @@ function Navheader() {
               </li>
               {/* signup */}
               <li className="mt-4 lg:mt-0">
-                <a
+                {/* <a
                   href="javascript:void(0)"
-                  className="py-3 px-4 text-center border text-white hover:text-indigo-600 rounded-md block lg:inline lg:border-0"
+                  className=""
                 >
                   Sign up
-                </a>
+                </a> */}
+                <NavLink
+                  to="/signup"
+                  className="py-3 px-4 text-center border text-white hover:text-indigo-600 rounded-md block lg:inline lg:border-0"
+                ><span>Sign up</span></NavLink>
               </li>
               {/* github logo */}
               <li className="mt-8 lg:mt-0">

@@ -1,5 +1,7 @@
-import HouseArenaLogo from "../../assets/HAwhiteWithoutBG.png";
-import HouseArenaBlackLogo from "../../assets/HAblackWithoutBG.png";
+// import HouseArenaLogo from "../../assets/HAwhiteWithoutBG.png";
+import HAwhiteblock from "../../assets/HAlogosvg/HAwhiteblock.svg";
+// import HouseArenaBlackLogo from "../../assets/HAblackWithoutBG.png";
+import HAblackblock from "../../assets/HAlogosvg/HAblackblock.svg";
 import { NavLink } from "react-router-dom";
 import SignupForm from "./SignupForm";
 
@@ -8,7 +10,7 @@ export default () => {
     <main className="w-full flex">
       <div className="relative flex-1 hidden items-center justify-center h-screen bg-gray-900 lg:flex">
         <div className="relative z-10 w-full max-w-md">
-          <img src={HouseArenaLogo} width={450} />
+          <img src={HAwhiteblock} width={450} />
           <div className=" mt-16 space-y-3">
             <h3 className="text-white text-3xl font-bold">
               Unlock the Gateway to Your House's Glory!
@@ -54,10 +56,10 @@ export default () => {
         ></div>
       </div>
       <div className="flex-1 flex items-center justify-center h-screen bg-white">
-        <div className="w-full max-w-md space-y-4 px-10  text-gray-600 sm:px-0">
+        <div className="w-full max-w-md space-y-4 text-gray-600 mx-5">
           <img
-            src={HouseArenaBlackLogo}
-            width={150}
+            src={HAblackblock}
+            width={250}
             className="lg:hidden m-auto"
           />
           <div className="flex-col text-center justify-around items-center mt-5 space-y-2">

@@ -1,52 +1,19 @@
 import React, { useState } from "react";
 // import { RegisterUser } from "../../backendCalls/user";  
 import {
-  AutoComplete,
+  // AutoComplete,
   Button,
-  Cascader,
+  // Cascader,
   Checkbox,
-  Col,
+  // Col,
   Form,
   Input,
   InputNumber,
-  Row,
+  // Row,
   Select,
 } from "antd";
 const { Option } = Select;
-// const residences = [
-//   {
-//     value: "zhejiang",
-//     label: "Zhejiang",
-//     children: [
-//       {
-//         value: "hangzhou",
-//         label: "Hangzhou",
-//         children: [
-//           {
-//             value: "xihu",
-//             label: "West Lake",
-//           },
-//         ],
-//       },
-//     ],
-//   },
-//   {
-//     value: "jiangsu",
-//     label: "Jiangsu",
-//     children: [
-//       {
-//         value: "nanjing",
-//         label: "Nanjing",
-//         children: [
-//           {
-//             value: "zhonghuamen",
-//             label: "Zhong Hua Men",
-//           },
-//         ],
-//       },
-//     ],
-//   },
-// ];
+
 const formItemLayout = {
   labelCol: {
     xs: {
@@ -78,45 +45,7 @@ const tailFormItemLayout = {
   },
 };
 export default () => {
-  const [form] = Form.useForm();
-  // const prefixSelector = (
-  //   <Form.Item name="prefix" noStyle>
-  //     <Select
-  //       style={{
-  //         width: 70,
-  //       }}
-  //     >
-  //       <Option value="86">+86</Option>
-  //       <Option value="87">+87</Option>
-  //     </Select>
-  //   </Form.Item>
-  // );
-  // const suffixSelector = (
-  //   <Form.Item name="suffix" noStyle>
-  //     <Select
-  //       style={{
-  //         width: 70,
-  //       }}
-  //     >
-  //       <Option value="USD">$</Option>
-  //       <Option value="CNY">¥</Option>
-  //     </Select>
-  //   </Form.Item>
-  // );
-  // const [autoCompleteResult, setAutoCompleteResult] = useState([]);
-  // const onWebsiteChange = (value) => {
-  //   if (!value) {
-  //     setAutoCompleteResult([]);
-  //   } else {
-  //     setAutoCompleteResult(
-  //       [".com", ".org", ".net"].map((domain) => `${value}${domain}`)
-  //     );
-  //   }
-  // };
-  // const websiteOptions = autoCompleteResult.map((website) => ({
-  //   label: website,
-  //   value: website,
-  // }));
+  // const [form] = Form.useForm();
   const onFinish = async (values) => {
     console.log("Received values of form: ", values);
     // try {
@@ -136,13 +65,9 @@ export default () => {
   return (
     <Form
       {...formItemLayout}
-      form={form}
+      // form={form}
       name="register"
       onFinish={onFinish}
-      // initialValues={{
-      //   residence: ["zhejiang", "hangzhou", "xihu"],
-      //   prefix: "86",
-      // }}
       style={{
         maxWidth: 600,
       }}
@@ -182,7 +107,7 @@ export default () => {
       </Form.Item>
 
       <Form.Item
-        name="confirm"
+        name="confirm pass"
         label="Confirm Password"
         dependencies={["password"]}
         hasFeedback
@@ -208,7 +133,7 @@ export default () => {
 
       <Form.Item
         label="Scaler Id"
-        name="InputNumber"
+        name="scaler_id"
         tooltip="Your official Scaler Id"
         rules={[
           {
@@ -225,12 +150,12 @@ export default () => {
       </Form.Item>
 
       <Form.Item
-        name="gender"
+        name="house"
         label="House"
         rules={[
           {
             required: true,
-            message: "Please select gender!",
+            message: "Please select house!",
           },
         ]}
       >
@@ -243,13 +168,13 @@ export default () => {
       </Form.Item>
 
       <Form.Item
-        name="leetcode-id"
+        name="leetcode_id"
         label="Leetcode Id"
         tooltip="Your official leetcode id"
         rules={[
           {
             required: true,
-            message: "Please input your nickname!",
+            message: "Please input your leetcode official id!",
             whitespace: true,
           },
         ]}
@@ -262,6 +187,9 @@ export default () => {
         valuePropName="checked"
         rules={[
           {
+            required: true,
+          },
+          {
             validator: (_, value) =>
               value
                 ? Promise.resolve()
@@ -271,14 +199,13 @@ export default () => {
         {...tailFormItemLayout}
       >
         <Checkbox>
-          {/* You cannot change details once registered. */}
           Please confirm all details, you can't change them later.
         </Checkbox>
       </Form.Item>
       <Form.Item {...tailFormItemLayout}>
         <Button
           type="primary"
-          onClick={onFinish}
+          // onClick={onFinish}
           htmlType="submit"
           className="bg-purple-900"
         >
