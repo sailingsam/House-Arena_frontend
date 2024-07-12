@@ -55,7 +55,7 @@ export default () => {
           }}
         ></div>
       </div>
-      <div className="flex-1 flex items-center justify-center h-screen bg-white">
+      <div className="flex-1 flex items-center justify-center min-h-screen bg-white">
         <div className="w-full max-w-md space-y-4 text-gray-600 mx-5">
           <img
             src={HAblackblock}

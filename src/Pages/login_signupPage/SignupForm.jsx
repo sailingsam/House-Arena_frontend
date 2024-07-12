@@ -1,17 +1,6 @@
 import React, { useState } from "react";
-// import { RegisterUser } from "../../backendCalls/user";  
-import {
-  // AutoComplete,
-  Button,
-  // Cascader,
-  Checkbox,
-  // Col,
-  Form,
-  Input,
-  InputNumber,
-  // Row,
-  Select,
-} from "antd";
+// import { RegisterUser } from "../../backendCalls/user";
+import { Button, Checkbox, Form, Input, InputNumber, Select } from "antd";
 const { Option } = Select;
 
 const formItemLayout = {
@@ -46,6 +35,7 @@ const tailFormItemLayout = {
 };
 export default () => {
   // const [form] = Form.useForm();
+  const [isStudent, setIsStudent] = React.useState(false);
   const onFinish = async (values) => {
     console.log("Received values of form: ", values);
     // try {
@@ -60,6 +50,15 @@ export default () => {
     //   console.log(error);
     //   message.error('no register -> ' + error.response.data.message);
     // }
+  };
+
+  const handleEmailChange = (e) => {
+    const email = e.target.value;
+    if (email.endsWith("@sst.scaler.com")) {
+      setIsStudent(true);
+    } else {
+      setIsStudent(false);
+    }
   };
 
   return (
@@ -86,9 +85,22 @@ export default () => {
             required: true,
             message: "Please input your E-mail!",
           },
+          {
+            validator: (_, value) => {
+              if (value.endsWith("@sst.scaler.com") || value.endsWith("@scaler.com")) {
+                return Promise.resolve();
+              }
+              return Promise.reject(
+                new Error("Please use only official scaler gmail id (@sst.scaler.com or @scaler.com)")
+              );
+            }
+          }
         ]}
       >
-        <Input placeholder="@sst.scaler.com / @scaler.com" />
+        <Input
+          placeholder="@sst.scaler.com / @scaler.com"
+          onChange={handleEmailChange}
+        />
       </Form.Item>
 
       <Form.Item
@@ -132,55 +144,77 @@ export default () => {
       </Form.Item>
 
       <Form.Item
-        label="Scaler Id"
-        name="scaler_id"
-        tooltip="Your official Scaler Id"
+        name="name"
+        label="Name"
+        tooltip="Your real name please"
         rules={[
           {
-            required: false,
-            message: "Please input!",
+            type: "string",
+            message: "not valid name",
           },
-        ]}
-      >
-        <InputNumber
-          style={{
-            width: "100%",
-          }}
-        />
-      </Form.Item>
-
-      <Form.Item
-        name="house"
-        label="House"
-        rules={[
           {
             required: true,
-            message: "Please select house!",
-          },
-        ]}
-      >
-        <Select placeholder="select your house">
-          <Option value="Kong">Kong</Option>
-          <Option value="Leo">Leo</Option>
-          <Option value="Phoenix">Phoenix</Option>
-          <Option value="Tusker">Tusker</Option>
-        </Select>
-      </Form.Item>
-
-      <Form.Item
-        name="leetcode_id"
-        label="Leetcode Id"
-        tooltip="Your official leetcode id"
-        rules={[
-          {
-            required: true,
-            message: "Please input your leetcode official id!",
-            whitespace: true,
+            message: "Please input your name!",
           },
         ]}
       >
         <Input />
       </Form.Item>
+
+      {isStudent && (
+        <>
+          <Form.Item
+            label="Scaler Id"
+            name="scaler_id"
+            tooltip="Your official Scaler Id"
+            rules={[
+              {
+                required: true,
+                message: "Please input!",
+              },
+            ]}
+          >
+            <InputNumber
+              style={{
+                width: "100%",
+              }}
+            />
+          </Form.Item>
+
+          <Form.Item
+            name="house"
+            label="House"
+            rules={[
+              {
+                required: true,
+                message: "Please select house!",
+              },
+            ]}
+          >
+            <Select placeholder="select your house">
+              <Option value="Kong">Kong</Option>
+              <Option value="Leo">Leo</Option>
+              <Option value="Phoenix">Phoenix</Option>
+              <Option value="Tusker">Tusker</Option>
+            </Select>
+          </Form.Item>
+
+          <Form.Item
+            name="leetcode_id"
+            label="Leetcode Id"
+            tooltip="Your official leetcode id"
+            rules={[
+              {
+                required: true,
+                message: "Please input your leetcode official id!",
+                whitespace: true,
+              },
+            ]}
+          >
+            <Input />
+          </Form.Item>
+        </>
+      )}
 
       <Form.Item
         name="agreement"
@@ -199,19 +233,17 @@ export default () => {
         {...tailFormItemLayout}
       >
         <Checkbox>
-          Please confirm all details, you can't change them later.
+          You can't change these details later, please confirm all details.
+          {/* Please confirm all details, you can't change them later. */}
         </Checkbox>
       </Form.Item>
+
       <Form.Item {...tailFormItemLayout}>
-        <Button
-          type="primary"
-          // onClick={onFinish}
-          htmlType="submit"
-          className="bg-purple-900"
-        >
-          Register
+        <Button type="primary" htmlType="submit" className="bg-purple-900">
+          Get OTP
         </Button>
       </Form.Item>
+
     </Form>
   );
 };
