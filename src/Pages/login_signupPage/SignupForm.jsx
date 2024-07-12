@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 // import { RegisterUser } from "../../backendCalls/user";
-import { Button, Checkbox, Form, Input, InputNumber, Select } from "antd";
+import { Button, Checkbox, Form, Input, InputNumber, Select, message } from "antd";
 const { Option } = Select;
 
 const formItemLayout = {
@@ -34,10 +34,11 @@ const tailFormItemLayout = {
   },
 };
 export default () => {
-  // const [form] = Form.useForm();
+  const [form] = Form.useForm();
   const [isStudent, setIsStudent] = React.useState(false);
   const [otpSent, setOtpSent] = useState(false);
   const [otp, setOtp] = useState("");
+  const [otpVerified, setOtpVerified] = useState(false);
   const onFinish = async (values) => {
     console.log("Received values of form: ", values);
     // try {
@@ -72,7 +73,7 @@ export default () => {
     // Get email from form
     const email = form.getFieldValue("email");
     try {
-      const response = await fetch("/verify-otp", {
+      const response = await fetch("http://localhost:4999/api/users/register/otp/verify_otp", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -94,7 +95,7 @@ export default () => {
 
   const sendOtp = async (email) => {
     try {
-      const response = await fetch("/api/users/register/otp/send_otp", {
+      const response = await fetch("http://localhost:4999/api/users/register/otp/send_otp", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -126,7 +127,7 @@ export default () => {
   return (
     <Form
       {...formItemLayout}
-      // form={form}
+      form={form}
       name="register"
       onFinish={onFinish}
       style={{
@@ -169,11 +170,37 @@ export default () => {
           onChange={handleEmailChange}
         />
       </Form.Item>
-      {/* <Form.Item {...tailFormItemLayout}>
+      {/* OTP Button */}
+      <Form.Item {...tailFormItemLayout}>
         <Button type="primary" onClick={handleGetOtpClick}>
           Get OTP
         </Button>
-      </Form.Item> */}
+      </Form.Item>
+
+      {/* OTP Input Field */}
+      {otpSent && (
+        <Form.Item
+          name="otp"
+          label="OTP"
+          rules={[
+            {
+              required: true,
+              message: "Please input the OTP sent to your email!",
+            },
+          ]}
+        >
+          <Input onChange={handleOtpChange} />
+        </Form.Item>
+      )}
+      {/* Verify OTP Button */}
+      {otpSent && (
+        <Form.Item {...tailFormItemLayout}>
+          <Button type="primary" onClick={handleVerifyOtp}>
+            Verify OTP
+          </Button>
+        </Form.Item>
+      )}
+      {/* Show Final Submit Button if OTP is verified */}
 
       <Form.Item
         name="password"
@@ -310,11 +337,18 @@ export default () => {
         </Checkbox>
       </Form.Item>
 
-      <Form.Item {...tailFormItemLayout}>
+      {/* <Form.Item {...tailFormItemLayout}>
         <Button type="primary" htmlType="submit" className="bg-purple-900">
           Get OTP
         </Button>
+      </Form.Item> */}
+      {otpVerified && (
+      <Form.Item {...tailFormItemLayout}>
+        <Button type="primary" htmlType="submit" className="bg-purple-900">
+          Register
+        </Button>
       </Form.Item>
+    )}
     </Form>
   );
 };
