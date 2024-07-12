@@ -1,10 +1,11 @@
 import { useEffect, useRef, useState } from "react";
 import "./Navheader.css";
-import horizontalLogo from "../../assets/horizontalLogo.png";
+// import horizontalLogo from "../../assets/horizontalLogo.png";
+import HAwhiteblock from "../../assets/HAlogosvg/HAwhiteblock.svg";
 import { NavLink } from "react-router-dom";
 
 function Navheader() {
-  const [state, setState] = useState(true);
+  const [state, setState] = useState(false);
   const navRef = useRef();
 
   const navigation = [
@@ -15,14 +16,12 @@ function Navheader() {
 
   return (
     <nav ref={navRef} className="bg-black w-full top-0 z-20 sticky">
-      <div className="items-center mx-10 px-5 max-w-screen-2xl mx-auto md:px-8 lg:flex">
-        <div className="flex items-center justify-between py-3 lg:py-3 lg:block">
+      <div className="items-center mx-10 px-5 md:px-8 max-w-screen-2xl mx-auto lg:flex">
+        <div className="flex items-center justify-between lg:block">
           <a href="javascript:void(0)">
             <img
-              className="h-11 w-auto"
-              src={horizontalLogo}
-              width={120}
-              height={50}
+              className="h-16 w-auto mr-5"
+              src={HAwhiteblock}
               alt="Float UI logo"
             />
           </a>
@@ -68,7 +67,6 @@ function Navheader() {
             state ? "h-screen pb-20 overflow-auto pr-4" : "hidden"
           }`}
         >
-          {/* below 2 div are in reverse order (flex-row-reverse)*/}
           <div>
             {" "}
             

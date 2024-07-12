@@ -1,6 +1,7 @@
 import HouseArenaLogo from "../../assets/HAwhiteWithoutBG.png";
 import HouseArenaBlackLogo from "../../assets/HAblackWithoutBG.png";
 import { NavLink } from "react-router-dom";
+import SignupForm from "./SignupForm";
 
 export default () => {
   return (
@@ -73,49 +74,7 @@ export default () => {
               </NavLink>
             </p>
           </div>
-          <form onSubmit={(e) => e.preventDefault()} className="space-y-5">
-            <div>
-              <label className="font-medium">
-                <span className="text-red-600">* </span>Email
-              </label>
-              <input
-                type="email"
-                required
-                placeholder="@sst.scaler.com / @scaler.com"
-                className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-full"
-              />
-            </div>
-            <div>
-              <label className="font-medium">
-                <span className="text-red-600">* </span>Password
-              </label>
-              <input
-                type="password"
-                required
-                placeholder="********"
-                className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-full"
-              />
-            </div>
-            <div>
-              <input
-                type="number"
-                required
-                placeholder="Scaler Id (eg:10063)"
-                className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-full"
-              />
-            </div>
-            <div>
-              <input
-                type="text"
-                required
-                placeholder="Leetcode Username"
-                className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-full"
-              />
-            </div>
-            <button className="w-full px-4 py-2 text-white font-medium bg-indigo-600 hover:bg-indigo-500 active:bg-indigo-600 rounded-full duration-150">
-              Git On Board
-            </button>
-          </form>
+          <SignupForm />
         </div>
       </div>
     </main>
