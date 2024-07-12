@@ -16,7 +16,7 @@ function Navheader() {
 
   return (
     <nav ref={navRef} className="bg-black w-full top-0 z-20 sticky">
-      <div className="items-center mx-12 px-5 md:px-8 max-w-screen-2xl mx-auto lg:flex">
+      <div className="items-center md:mx-12 px-5 md:px-8 max-w-screen-2xl lg:flex">
         <div className="flex items-center justify-between lg:block">
           <a href="javascript:void(0)">
             <img

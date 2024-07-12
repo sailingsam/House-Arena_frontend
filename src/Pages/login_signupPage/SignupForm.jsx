@@ -36,6 +36,8 @@ const tailFormItemLayout = {
 export default () => {
   // const [form] = Form.useForm();
   const [isStudent, setIsStudent] = React.useState(false);
+  const [otpSent, setOtpSent] = useState(false);
+  const [otp, setOtp] = useState("");
   const onFinish = async (values) => {
     console.log("Received values of form: ", values);
     // try {
@@ -50,6 +52,66 @@ export default () => {
     //   console.log(error);
     //   message.error('no register -> ' + error.response.data.message);
     // }
+  };
+
+  const handleGetOtpClick = () => {
+    // Get email from form
+    const email = form.getFieldValue("email");
+    if (email) {
+      sendOtp(email);
+    } else {
+      message.error("Please enter your email");
+    }
+  };
+
+  const handleOtpChange = (e) => {
+    setOtp(e.target.value);
+  };
+
+  const handleVerifyOtp = async () => {
+    // Get email from form
+    const email = form.getFieldValue("email");
+    try {
+      const response = await fetch("/verify-otp", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, otp }),
+      });
+      const data = await response.json();
+      if (data.success) {
+        setOtpVerified(true); // State to show final submit button
+        message.success("OTP verified successfully");
+      } else {
+        message.error("Invalid OTP");
+      }
+    } catch (error) {
+      console.error("Error verifying OTP:", error);
+      message.error("Failed to verify OTP");
+    }
+  };
+
+  const sendOtp = async (email) => {
+    try {
+      const response = await fetch("/api/users/register/otp/send_otp", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email }),
+      });
+      const data = await response.json();
+      if (data.success) {
+        setOtpSent(true); // State to show OTP input field
+        message.success("OTP sent successfully");
+      } else {
+        message.error("Failed to send OTP");
+      }
+    } catch (error) {
+      console.error("Error sending OTP:", error);
+      message.error("Failed to send OTP");
+    }
   };
 
   const handleEmailChange = (e) => {
@@ -87,14 +149,19 @@ export default () => {
           },
           {
             validator: (_, value) => {
-              if (value.endsWith("@sst.scaler.com") || value.endsWith("@scaler.com")) {
+              if (
+                value.endsWith("@sst.scaler.com") ||
+                value.endsWith("@scaler.com")
+              ) {
                 return Promise.resolve();
               }
               return Promise.reject(
-                new Error("Please use only official scaler gmail id (@sst.scaler.com or @scaler.com)")
+                new Error(
+                  "Please use only official scaler gmail id (@sst.scaler.com or @scaler.com)"
+                )
               );
-            }
-          }
+            },
+          },
         ]}
       >
         <Input
@@ -102,6 +169,11 @@ export default () => {
           onChange={handleEmailChange}
         />
       </Form.Item>
+      {/* <Form.Item {...tailFormItemLayout}>
+        <Button type="primary" onClick={handleGetOtpClick}>
+          Get OTP
+        </Button>
+      </Form.Item> */}
 
       <Form.Item
         name="password"
@@ -243,7 +315,6 @@ export default () => {
           Get OTP
         </Button>
       </Form.Item>
-
     </Form>
   );
 };
