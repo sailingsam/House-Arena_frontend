@@ -119,12 +119,6 @@ function Navheader() {
               </li>
               {/* signup */}
               <li className="mt-4 lg:mt-0">
-                {/* <a
-                  href="javascript:void(0)"
-                  className=""
-                >
-                  Sign up
-                </a> */}
                 <NavLink
                   to="/signup"
                   className="py-3 px-4 text-center border text-white hover:text-indigo-600 rounded-md block lg:inline lg:border-0"
