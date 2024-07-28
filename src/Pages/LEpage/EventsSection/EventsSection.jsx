@@ -1,198 +1,17 @@
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchEvents } from "../../../redux/actions/eventsActions";
+import Loader from "../../../Components/Loader";
+
 export default () => {
-  const documents = [
-    {
-      event_name: "Time Capsule",
-      leo_point: 5,
-      kong_point: 1,
-      tusker_point: 3,
-      date: null,
-      pheonix_point: 2,
-      $id: "665386180000531b15f5",
-      $createdAt: "2024-05-26T18:57:26.334+00:00",
-      $updatedAt: "2024-05-27T19:53:48.998+00:00",
-      $permissions: [],
-      $databaseId: "house-arena-database",
-      $collectionId: "event-details",
-    },
-    {
-      event_name: "Relays(Boys)",
-      leo_point: 0,
-      kong_point: 3,
-      tusker_point: 2,
-      date: "27-02-2024",
-      pheonix_point: 5,
-      $id: "6653867300239ed209b2",
-      $createdAt: "2024-05-26T18:58:58.275+00:00",
-      $updatedAt: "2024-05-31T09:39:45.028+00:00",
-      $permissions: [],
-      $databaseId: "house-arena-database",
-      $collectionId: "event-details",
-    },
-    {
-      event_name: "Relay(Girls)",
-      leo_point: 5,
-      kong_point: 2,
-      tusker_point: 3,
-      date: "27-02-2024",
-      pheonix_point: 0,
-      $id: "665386b1000bd99b5a11",
-      $createdAt: "2024-05-26T18:59:59.526+00:00",
-      $updatedAt: "2024-05-31T09:44:33.126+00:00",
-      $permissions: [],
-      $databaseId: "house-arena-database",
-      $collectionId: "event-details",
-    },
-    {
-      event_name: "Jenga",
-      leo_point: 1,
-      kong_point: 5,
-      tusker_point: 2,
-      date: "27-02-2024",
-      pheonix_point: 3,
-      $id: "6653875500173a9b3e7f",
-      $createdAt: "2024-05-26T19:02:43.845+00:00",
-      $updatedAt: "2024-05-31T09:45:48.985+00:00",
-      $permissions: [],
-      $databaseId: "house-arena-database",
-      $collectionId: "event-details",
-    },
-    {
-      event_name: "Pitthu",
-      leo_point: 1,
-      kong_point: 3,
-      tusker_point: 2,
-      date: null,
-      pheonix_point: 5,
-      $id: "665387880023aa776420",
-      $createdAt: "2024-05-26T19:03:34.911+00:00",
-      $updatedAt: "2024-05-27T19:55:53.591+00:00",
-      $permissions: [],
-      $databaseId: "house-arena-database",
-      $collectionId: "event-details",
-    },
-    {
-      event_name: "Inpromptu Rapid Fire",
-      leo_point: 5,
-      kong_point: 2,
-      tusker_point: 1,
-      date: "29-02-2024",
-      pheonix_point: 3,
-      $id: "665387b4002508e3fc1f",
-      $createdAt: "2024-05-26T19:04:18.933+00:00",
-      $updatedAt: "2024-05-31T09:47:35.808+00:00",
-      $permissions: [],
-      $databaseId: "house-arena-database",
-      $collectionId: "event-details",
-    },
-    {
-      event_name: "Chess",
-      leo_point: 1,
-      kong_point: 1,
-      tusker_point: 1,
-      date: "03-03-2024",
-      pheonix_point: 10,
-      $id: "6656339539210298c12f",
-      $createdAt: "2024-05-28T19:42:13.571+00:00",
-      $updatedAt: "2024-05-29T02:14:29.288+00:00",
-      $permissions: [
-        'read("user:6651ee462d690e533ca6")',
-        'update("user:6651ee462d690e533ca6")',
-        'delete("user:6651ee462d690e533ca6")',
-      ],
-      $databaseId: "house-arena-database",
-      $collectionId: "event-details",
-    },
-    {
-      event_name: "Painting Competition ",
-      leo_point: 2,
-      kong_point: 1,
-      tusker_point: 6,
-      date: "08-03-2024",
-      pheonix_point: 3,
-      $id: "665633b7e2900615c164",
-      $createdAt: "2024-05-28T19:42:48.284+00:00",
-      $updatedAt: "2024-05-31T09:55:16.955+00:00",
-      $permissions: [
-        'read("user:6651ee462d690e533ca6")',
-        'update("user:6651ee462d690e533ca6")',
-        'delete("user:6651ee462d690e533ca6")',
-      ],
-      $databaseId: "house-arena-database",
-      $collectionId: "event-details",
-    },
-    {
-      event_name: "Badminton girls",
-      leo_point: 3,
-      kong_point: 2,
-      tusker_point: 5,
-      date: "14-04-2024",
-      pheonix_point: 1,
-      $id: "66563404933785b2df27",
-      $createdAt: "2024-05-28T19:44:04.960+00:00",
-      $updatedAt: "2024-06-10T02:03:21.592+00:00",
-      $permissions: [
-        'read("user:6651ee462d690e533ca6")',
-        'update("user:6651ee462d690e533ca6")',
-        'delete("user:6651ee462d690e533ca6")',
-      ],
-      $databaseId: "house-arena-database",
-      $collectionId: "event-details",
-    },
-    {
-      event_name: "Badminton Boys",
-      leo_point: 5,
-      kong_point: 1,
-      tusker_point: 5,
-      date: "14-04-2024",
-      pheonix_point: 1,
-      $id: "6656341c35b6044a6047",
-      $createdAt: "2024-05-28T19:44:28.566+00:00",
-      $updatedAt: "2024-05-31T09:31:45.895+00:00",
-      $permissions: [
-        'read("user:6651ee462d690e533ca6")',
-        'update("user:6651ee462d690e533ca6")',
-        'delete("user:6651ee462d690e533ca6")',
-      ],
-      $databaseId: "house-arena-database",
-      $collectionId: "event-details",
-    },
-    {
-      event_name: "CP contest ",
-      leo_point: 0,
-      kong_point: 1,
-      tusker_point: 0,
-      date: "No Data",
-      pheonix_point: 0,
-      $id: "6656343c0b79811041e6",
-      $createdAt: "2024-05-28T19:45:00.498+00:00",
-      $updatedAt: "2024-05-31T13:34:12.821+00:00",
-      $permissions: [
-        'read("user:6651ee462d690e533ca6")',
-        'update("user:6651ee462d690e533ca6")',
-        'delete("user:6651ee462d690e533ca6")',
-      ],
-      $databaseId: "house-arena-database",
-      $collectionId: "event-details",
-    },
-    {
-      event_name: "You Laugh You Loose",
-      leo_point: 1,
-      kong_point: 1,
-      tusker_point: 1,
-      date: "14-06-2024",
-      pheonix_point: 1,
-      $id: "6670000f31510fa1c6b3",
-      $createdAt: "2024-06-17T09:21:17.659+00:00",
-      $updatedAt: "2024-06-17T09:21:17.659+00:00",
-      $permissions: [
-        'read("user:6651ee462d690e533ca6")',
-        'update("user:6651ee462d690e533ca6")',
-        'delete("user:6651ee462d690e533ca6")',
-      ],
-      $databaseId: "house-arena-database",
-      $collectionId: "event-details",
-    },
-  ];
+  const dispatch = useDispatch();
+  const events = useSelector((state) => state.events.events);
+  const loading = useSelector((state) => state.events.loading);
+  const error = useSelector((state) => state.events.error);
+
+  useEffect(() => {
+    dispatch(fetchEvents());
+  }, [dispatch]);
 
   return (
     <div className="max-w-screen-xl mx-auto px-4 md:px-8">
@@ -234,40 +53,49 @@ export default () => {
             </tr>
           </thead>
           <tbody className="text-white font-semibold divide-y">
-            {documents.map((item, idx) => (
-              <tr key={idx}>
-                <td className="px-6 py-4 whitespace-nowrap">
-                  {item.event_name}
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap">{item.date}</td>
-                <td className="px-6 py-4 whitespace-nowrap text-center border-2 border-blue-500">
-                  {item.kong_point}
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap text-center border-2 border-yellow-500">
-                  {item.leo_point}
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap text-center border-2 border-red-500">
-                  {item.pheonix_point}
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap text-center border-2 border-green-500">
-                  {item.tusker_point}
-                </td>
-                <td className="text-right px-6 whitespace-nowrap">
-                  <a
-                    href="javascript:void()"
-                    className="py-2 px-3 font-medium text-indigo-600 hover:text-indigo-500 duration-150 hover:bg-gray-50 rounded-lg"
-                  >
-                    Edit
-                  </a>
-                  <button
-                    href="javascript:void()"
-                    className="py-2 leading-none px-3 font-medium text-red-600 hover:text-red-500 duration-150 hover:bg-gray-50 rounded-lg"
-                  >
-                    Delete
-                  </button>
+            {loading ? (
+              <tr>
+                <td colSpan="6" className="text-center py-4">
+                  <Loader LoaderData={"Preparing for the house points. Data is on its way!"}/>
                 </td>
               </tr>
-            ))}
+            ) : error ? (
+              <tr>
+                <td colSpan="6" className="text-center py-4">
+                  Error: {error}
+                </td>
+              </tr>
+            ) : (
+              events.map((item, idx) => (
+                <tr key={idx}>
+                  <td className="px-6 py-4 whitespace-nowrap">{item.name}</td>
+                  <td className="px-6 py-4 whitespace-nowrap">
+                    {(() => {
+                      const date = new Date(item.date);
+                      const day = String(date.getDate()).padStart(2, "0");
+                      const month = String(date.getMonth() + 1).padStart(
+                        2,
+                        "0"
+                      ); // Months are zero-indexed
+                      const year = date.getFullYear();
+                      return `${day}-${month}-${year}`;
+                    })()}
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-center border-2 border-blue-500">
+                    {item.housePoints.kong}
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-center border-2 border-yellow-500">
+                    {item.housePoints.leo}
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-center border-2 border-red-500">
+                    {item.housePoints.phoenix}
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-center border-2 border-green-500">
+                    {item.housePoints.tusker}
+                  </td>
+                </tr>
+              ))
+            )}
           </tbody>
         </table>
       </div>

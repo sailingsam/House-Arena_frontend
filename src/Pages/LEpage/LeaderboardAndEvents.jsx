@@ -5,7 +5,7 @@ export default () => {
   
 
   return (
-    <div>
+    <div className="mb-20">
       <LeaderboardSection />
       <EventsSection />
     </div>

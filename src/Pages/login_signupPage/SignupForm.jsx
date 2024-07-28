@@ -39,20 +39,21 @@ export default () => {
   const [otpSent, setOtpSent] = useState(false);
   const [otp, setOtp] = useState("");
   const [otpVerified, setOtpVerified] = useState(false);
+  
   const onFinish = async (values) => {
     console.log("Received values of form: ", values);
-    // try {
-    //   const res = await RegisterUser(values);
-    //   if (res.success) {
-    //     message.success('yoo! -> '+res.message);
-    //     // navigate('/login');
-    //   } else {
-    //     message.error('hi -> ' + res.message);
-    //   }
-    // } catch (error) {
-    //   console.log(error);
-    //   message.error('no register -> ' + error.response.data.message);
-    // }
+    try {
+      const res = await RegisterUser(values);
+      if (res.success) {
+        message.success('yoo! -> '+res.message);
+        navigate('/login');
+      } else {
+        message.error('hi -> ' + res.message);
+      }
+    } catch (error) {
+      console.log(error);
+      message.error('no register -> ' + error.response.data.message);
+    }
   };
 
   const handleGetOtpClick = () => {
@@ -337,11 +338,6 @@ export default () => {
         </Checkbox>
       </Form.Item>
 
-      {/* <Form.Item {...tailFormItemLayout}>
-        <Button type="primary" htmlType="submit" className="bg-purple-900">
-          Get OTP
-        </Button>
-      </Form.Item> */}
       {otpVerified && (
       <Form.Item {...tailFormItemLayout}>
         <Button type="primary" htmlType="submit" className="bg-purple-900">
