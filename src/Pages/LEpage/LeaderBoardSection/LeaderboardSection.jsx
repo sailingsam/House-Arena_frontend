@@ -3,27 +3,31 @@ import kong from '../../../assets/logos/white bg/kong.png';
 import leo from '../../../assets/logos/white bg/leo.png';
 import phoenix from '../../../assets/logos/white bg/phoenix.png';
 import tusker from '../../../assets/logos/white bg/tusker.png';
+import { useSelector } from "react-redux";
 
 export default () => {
+  const housePoints = useSelector((state) => state.totalHousePoints);
   const tableItems = [
     {
       avatar: kong,
-      name: "House of Phoenix",
-      totalpoints: 100,
+      name: "House of kong",
+      totalpoints: housePoints.kong,
     },{
       avatar: leo,
       name: "House of Leo",
-      totalpoints: 200,
+      totalpoints: housePoints.leo,
     },{
       avatar: phoenix,
       name: "House of Phoenix",
-      totalpoints: 300,
+      totalpoints: housePoints.phoenix,
     },{
       avatar: tusker,
       name: "House of Tusker",
-      totalpoints: 400,
+      totalpoints: housePoints.tusker,
     }
   ];
+  tableItems.sort((a,b) => b.totalpoints - a.totalpoints);
+
   return (
     <section className="mt-10 md:mt-14 lg:mt-10 mx-auto max-w-screen-xl pb-12 px-4 items-center md:flex md:items-center md:px-8">
       <div className="space-y-4 m-auto text-center lg:text-left lg:max-w-md">

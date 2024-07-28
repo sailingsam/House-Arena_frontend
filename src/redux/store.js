@@ -2,11 +2,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import { applyMiddleware, combineReducers } from "@reduxjs/toolkit";
 import eventsReducer from "./reducers/eventsReducer";
 import { thunk } from "redux-thunk";
-
-const rootReducer = combineReducers({
-  events: eventsReducer,
-  // other reducers can be added here
-});
+import rootReducer from "./reducers";
 
 const store = configureStore({
   reducer: rootReducer,

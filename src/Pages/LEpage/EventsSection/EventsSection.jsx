@@ -7,6 +7,8 @@ import konglogo from "../../../assets/logos/transparentbg/kong.png";
 import leologo from "../../../assets/logos/transparentbg/leo.png";
 import phoenixlogo from "../../../assets/logos/transparentbg/phoenix.png";
 import tuskerlogo from "../../../assets/logos/transparentbg/tusker.png";
+import { updateHousePoints } from "../../../redux/actions/totalHousePointsActions";
+
 
 export default () => {
   const dispatch = useDispatch();
@@ -16,9 +18,28 @@ export default () => {
 
   const [searchTerm, setSearchTerm] = useState("");
 
-  const filteredEvents = events.filter((e) =>
+  const reversedEvents = [...events].reverse();
+  const filteredEvents = reversedEvents.filter((e) =>
     e.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
+
+  useEffect(() => {
+    const housePoints = {
+      kong: 0,
+      leo: 0,
+      phoenix: 0,
+      tusker: 0,
+    };
+
+    events.forEach(event => {
+      housePoints.kong += event.housePoints.kong;
+      housePoints.leo += event.housePoints.leo;
+      housePoints.phoenix += event.housePoints.phoenix;
+      housePoints.tusker += event.housePoints.tusker;
+    });
+
+    dispatch(updateHousePoints(housePoints));
+  }, [events, dispatch]);
 
   useEffect(() => {
     dispatch(fetchEvents());
