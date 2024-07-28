@@ -11,11 +11,12 @@ export default function ProjectInfo() {
       <div class="group-hover:rotate-45 bg-transparent group-hover:scale-150 -top-24 -left-12 absolute shadow-sky-800 shadow-inner rounded-xl transition-all ease-in-out group-hover:duration-1000 duration-1000 w-64 h-64"></div>
       <div class="group-hover:-rotate-45 bg-transparent group-hover:scale-150 top-24 left-12 absolute shadow-sky-500 shadow-inner rounded-xl transition-all ease-in-out group-hover:duration-1000 duration-1000 w-4 h-4"></div>
       <div class="w-full h-full shadow-xl shadow-neutral-900 p-3 bg-black  rounded-xl flex-col gap-2 flex justify-center">
-        <span class="text-neutral-50 font-bold text-xl italic">
-          About Huse Arena
+        <span class="text-neutral-50 z-10 font-bold text-xl italic">
+          About House Arena
         </span>
-        <p class="text-white">
-          I made this Project as part of my Buildspace N&W's S5 project as well as my MERN Course project.
+        <p class="text-white z-10">
+          I made this Project as part of my Buildspace N&W's S5 project as well
+          as my MERN Course project.
         </p>
       </div>
     </div>

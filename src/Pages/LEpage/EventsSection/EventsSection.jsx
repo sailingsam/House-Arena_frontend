@@ -1,13 +1,24 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchEvents } from "../../../redux/actions/eventsActions";
 import Loader from "../../../Components/Loader";
+import { BiSearch } from "react-icons/bi";
+import konglogo from "../../../assets/logos/transparentbg/kong.png";
+import leologo from "../../../assets/logos/transparentbg/leo.png";
+import phoenixlogo from "../../../assets/logos/transparentbg/phoenix.png";
+import tuskerlogo from "../../../assets/logos/transparentbg/tusker.png";
 
 export default () => {
   const dispatch = useDispatch();
   const events = useSelector((state) => state.events.events);
   const loading = useSelector((state) => state.events.loading);
   const error = useSelector((state) => state.events.error);
+
+  const [searchTerm, setSearchTerm] = useState("");
+
+  const filteredEvents = events.filter((e) =>
+    e.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   useEffect(() => {
     dispatch(fetchEvents());
@@ -21,22 +32,19 @@ export default () => {
             Past Events
           </h3>
         </div>
-        <div class="p-5 overflow-hidden w-[60px] h-[60px] hover:w-[270px] bg-gray-800 shadow-[2px_2px_20px_rgba(0,0,0,0.08)] rounded-full flex group items-center hover:duration-300 duration-300">
-          <div class="flex items-center justify-center fill-white">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              id="Isolation_Mode"
-              data-name="Isolation Mode"
-              viewBox="0 0 24 24"
-              width="22"
-              height="22"
-            >
-              <path d="M18.9,16.776A10.539,10.539,0,1,0,16.776,18.9l5.1,5.1L24,21.88ZM10.5,18A7.5,7.5,0,1,1,18,10.5,7.507,7.507,0,0,1,10.5,18Z"></path>
-            </svg>
+        <div
+          className={`p-5 overflow-hidden ${
+            searchTerm ? "w-[270px]" : "w-[60px]"
+          } h-[60px] hover:w-[270px] bg-gray-800 shadow-[2px_2px_20px_rgba(0,0,0,0.08)] rounded-full flex group items-center hover:duration-300 duration-300`}
+        >
+          <div className="flex items-center text-white justify-center fill-white">
+            <BiSearch size={22} />
           </div>
           <input
             type="text"
-            class="outline-none text-[20px] bg-transparent w-full text-white font-normal px-4"
+            className="outline-none text-[20px] bg-transparent w-full text-white font-normal px-4"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
           />
         </div>
       </div>
@@ -46,17 +54,25 @@ export default () => {
             <tr>
               <th className="py-3 px-6">Event</th>
               <th className="py-3 px-6">Date</th>
-              <th className="py-3 px-6 text-center bg-blue-500">Kong</th>
-              <th className="py-3 px-6 text-center bg-yellow-500">Leo</th>
-              <th className="py-3 px-6 text-center bg-red-500">Phoenix</th>
-              <th className="py-3 px-6 text-center bg-green-500">Tusker</th>
+              <th className="py-1 lg:px-5 text-center bg-blue-500">
+                <img src={konglogo} className="w-14 h-14 m-auto" />
+              </th>
+              <th className="py-1 lg:px-5 text-center bg-yellow-500">
+                <img src={leologo} className="w-14 h-14 m-auto" />
+              </th>
+              <th className="py-1 lg:px-5 text-center bg-red-500">
+                <img src={phoenixlogo} className="w-14 h-14 m-auto" />
+              </th>
+              <th className="py-1 lg:px-5 text-center bg-green-500">
+                <img src={tuskerlogo} className="w-14 h-14 m-auto" />
+              </th>
             </tr>
           </thead>
           <tbody className="text-white font-semibold divide-y">
             {loading ? (
               <tr>
                 <td colSpan="6" className="text-center py-4">
-                  <Loader LoaderData={"Preparing for the house points. Data is on its way!"}/>
+                  <Loader LoaderData={"Loading Events wise Points..."} />
                 </td>
               </tr>
             ) : error ? (
@@ -66,7 +82,7 @@ export default () => {
                 </td>
               </tr>
             ) : (
-              events.map((item, idx) => (
+              filteredEvents.map((item, idx) => (
                 <tr key={idx}>
                   <td className="px-6 py-4 whitespace-nowrap">{item.name}</td>
                   <td className="px-6 py-4 whitespace-nowrap">
