@@ -14,6 +14,10 @@ import {
 } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from './redux/store.js';
+import KongPage from "./Pages/HousePages/KongPage/KongPage.jsx";
+import LeoPage from "./Pages/HousePages/LeoPages/LeoPage.jsx";
+import PhoenixPage from "./Pages/HousePages/PhoenixPages/PhoenixPage.jsx";
+import TuskerPage from "./Pages/HousePages/TuskerPage/TuskerPage.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -22,6 +26,12 @@ const router = createBrowserRouter(
         <Route path="" element={<HomePage />} />
         <Route path="leaderboard&events" element={<Leaderboard />} />
       </Route>
+      
+      <Route path="/houseofkong" element={<KongPage />}></Route>
+      <Route path="/houseofleo" element={<LeoPage />}></Route>
+      <Route path="/houseofphoenix" element={<PhoenixPage />}></Route>
+      <Route path="/houseoftusker" element={<TuskerPage />}></Route>
+
       <Route path="/login" element={<LoginPage />}></Route>
       <Route path="/signup" element={<SignupPage />}></Route>
     </>

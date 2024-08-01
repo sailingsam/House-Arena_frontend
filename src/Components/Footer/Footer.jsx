@@ -85,7 +85,6 @@ function Footer() {
             <a href="https://www.linkedin.com/in/sailingsam" target="_blank">
               <IoLogoLinkedin className="w-6 h-6 hover:text-gray-500 duration-150" />
             </a>
-
             <a href="https://peerlist.io/sailingsam" target="_blank">
               <SiPeerlist className="w-6 h-6 hover:text-gray-500 duration-150" />
             </a>
