@@ -3,10 +3,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchEvents } from "../../../redux/actions/eventsActions";
 import Loader from "../../../Components/Loader";
 import { BiSearch } from "react-icons/bi";
-import konglogo from "../../../assets/logos/transparentbg/kong.png";
-import leologo from "../../../assets/logos/transparentbg/leo.png";
-import phoenixlogo from "../../../assets/logos/transparentbg/phoenix.png";
-import tuskerlogo from "../../../assets/logos/transparentbg/tusker.png";
+import konglogo from "../../../assets/logos/transparentbg/13.svg";
+import leologo from "../../../assets/logos/transparentbg/14.svg";
+import phoenixlogo from "../../../assets/logos/transparentbg/15.svg";
+import tuskerlogo from "../../../assets/logos/transparentbg/16.svg";
 import { updateHousePoints } from "../../../redux/actions/totalHousePointsActions";
 
 

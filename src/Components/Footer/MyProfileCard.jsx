@@ -14,14 +14,13 @@ function MyProfileCard() {
           <div class="name">Saksham Jain</div>
           <div className="text-gray-300">Batch of '27 SST</div>
         </div>
-        <div class="flip-card-back">
+        <div class="flip-card-back flex items-center justify-center">
           <div class="Description">
             <p class="description">
-              First-year CS student at Scaler School of Technology, specializing
-              in Java, full-stack development, and Flutter.
+              CS UnderGrad at Scaler School of Technology, specializing
+              in <br />Java & full-stack development.
               <br />
-              I'm dedicated to learning new tech and driving innovation. Beyond
-              tech, I've successfully grown a Facebook page to 93k followers.
+              Beyond tech, I've successfully grown a Facebook page to 93k followers.
             </p>
           </div>
         </div>

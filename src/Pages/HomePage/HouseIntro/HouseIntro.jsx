@@ -1,7 +1,7 @@
-import konglogo from "../../../assets/logos/transparentbg/kong.png";
-import leologo from "../../../assets/logos/transparentbg/leo.png";
-import phoenixlogo from "../../../assets/logos/transparentbg/phoenix.png";
-import tuskerlogo from "../../../assets/logos/transparentbg/tusker.png";
+import konglogo from "../../../assets/logos/transparentbg/13.svg";
+import leologo from "../../../assets/logos/transparentbg/14.svg";
+import phoenixlogo from "../../../assets/logos/transparentbg/15.svg";
+import tuskerlogo from "../../../assets/logos/transparentbg/16.svg";
 
 export default () => {
   const houseData = [
@@ -58,7 +58,7 @@ export default () => {
               SST's Houses
             </span>
           </h3>
-          <p className="mt-3">
+          <p className="mt-3 font-semibold">
             To encourage a culture of healthy competition and camaraderie, the
             student community is divided into four houses. Each house sigil
             represents a key attribute necessary for personal growth and
@@ -66,7 +66,7 @@ export default () => {
           </p>
         </div>
         <div className="mt-12 lg:mt-0">
-          <ul className="flex justify-center items-start gap-5 sm:gap-10 md:gap-12 lg:gap-16">
+          <ul className="grid grid-cols-2 gap-y-8 items-start sm:flex sm:justify-center sm:items-start sm:gap-10 md:gap-12 lg:gap-16">
             {houseData.map((house, index) => (
               <li
                 key={index}
@@ -94,7 +94,7 @@ export default () => {
                       >
                         {house.name}
                       </p>
-                      <p className="text-sm text-gray-500">{house.attribute}</p>
+                      <p className="text-sm text-gray-400 font-semibold">{house.attribute}</p>
                     </div>
                     <div className="-rotate-45 cursor-pointer">
                       <svg

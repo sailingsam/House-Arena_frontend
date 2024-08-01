@@ -12,8 +12,8 @@ export default () => {
             Houses
           </span>
         </h1>
-        <p className="text-gray-300 max-w-xl leading-relaxed sm:mx-auto lg:ml-0">
-          House Arena is your one-stop platform for tracking house points,
+        <p className="text-gray-300 max-w-xl leading-relaxed sm:mx-auto lg:ml-0 font-semibold">
+          At <b className="text-lg text-white">Scaler School of Technology</b> we have 4 houses: House of Kong, Leo, Phoenix & Tusker. <br /> House Arena is your one-stop platform for tracking house points,
           viewing past events, and fostering a competitive spirit within your
           individul houses.
         </p>
