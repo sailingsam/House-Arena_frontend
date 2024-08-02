@@ -19,13 +19,13 @@ function Navheader() {
     <nav ref={navRef} className="bg-black w-full top-0 z-20 sticky">
       <div className="items-center md:mx-12 px-5 md:px-8 max-w-screen-2xl lg:flex">
         <div className="flex items-center justify-between lg:block">
-          <a href="javascript:void(0)">
+          <NavLink to={'/'}>
             <img
               className="h-16 w-auto mr-5"
               src={HAwhiteblock}
               alt="Float UI logo"
             />
-          </a>
+          </NavLink>
           <div className="lg:hidden">
             <button
               className="text-gray-700 outline-none p-2 rounded-md focus:border-gray-400 focus:border"

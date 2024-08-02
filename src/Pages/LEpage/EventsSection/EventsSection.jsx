@@ -9,7 +9,6 @@ import phoenixlogo from "../../../assets/logos/transparentbg/15.svg";
 import tuskerlogo from "../../../assets/logos/transparentbg/16.svg";
 import { updateHousePoints } from "../../../redux/actions/totalHousePointsActions";
 
-
 export default () => {
   const dispatch = useDispatch();
   const events = useSelector((state) => state.events.events);
@@ -31,7 +30,7 @@ export default () => {
       tusker: 0,
     };
 
-    events.forEach(event => {
+    events.forEach((event) => {
       housePoints.kong += event.housePoints.kong;
       housePoints.leo += event.housePoints.leo;
       housePoints.phoenix += event.housePoints.phoenix;
