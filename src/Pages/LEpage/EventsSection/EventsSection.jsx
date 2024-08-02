@@ -101,6 +101,12 @@ export default () => {
                   Error: {error}
                 </td>
               </tr>
+            ) : filteredEvents.length === 0 ? (
+              <tr>
+                <td colSpan="6" className="text-center py-4">
+                  <span className="text-white">No event data found :(</span>
+                </td>
+              </tr>
             ) : (
               filteredEvents.map((item, idx) => (
                 <tr key={idx}>
