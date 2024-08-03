@@ -58,10 +58,10 @@ export default () => {
                   <td className="flex items-center gap-x-3 py-3 px-4 lg:mr-10 whitespace-nowrap">
                     <img src={item.avatar} className="w-10 h-10 rounded-full" />
                     <div>
-                      <span className="">{item.name}</span>
+                      <span className={`${idx==0 ? "font-bold":""}`}>{item.name}</span>
                     </div>
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-center">
+                  <td className={`${idx==0 ? "font-bold":""} px-6 py-4 whitespace-nowrap text-center`}>
                     {item.totalpoints}
                   </td>
                 </tr>

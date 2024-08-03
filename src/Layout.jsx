@@ -6,7 +6,7 @@ import Footer from "./Components/Footer/Footer";
 function Layout() {
   return (
     <div
-      className="h-full"
+      className="h-full bg-black"
       style={{
         backgroundcolor: "#000000",
         backgroundImage:
