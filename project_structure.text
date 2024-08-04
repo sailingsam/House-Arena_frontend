@@ -1,0 +1,103 @@
+- .eslintrc.cjs
+- .gitignore
+- README.md
+- index.html
+- package-lock.json
+- package.json
+- postcss.config.js
+- public
+  - vite.svg
+- src
+  - Components
+    - Footer
+      - Footer.jsx
+      - MyProfileCard.css
+      - MyProfileCard.jsx
+      - ProjectInfo.jsx
+    - NavHeader
+      - Navheader.css
+      - Navheader.jsx
+  - Layout.jsx
+  - Pages
+    - HomePage
+      - EventsCarousel
+        - EventsCarousel.css
+        - EventsCarousel.jsx
+      - HeroMainpage
+        - Herosection.jsx
+      - HomePage.jsx
+      - HouseIntro
+        - HouseIntro.jsx
+    - HousePages
+      - KongPage
+      - LeoPages
+      - PhoenixPages
+      - TuskerPage
+    - LEpage
+      - EventsSection
+        - EventsSection.jsx
+      - LeaderBoardSection
+        - LeaderboardSection.jsx
+      - LeaderboardAndEvents.jsx
+    - login_signupPage
+      - Login.jsx
+      - Signup.jsx
+      - SignupForm.jsx
+  - assets
+    - HAblackWithoutBG.png
+    - HAlogosvg
+      - 3.svg
+      - 4.svg
+      - HAblackblock.svg
+      - HAblackwrap.svg
+      - HAwhiteblock.svg
+      - HAwhitewrap.svg
+    - HAwhiteWithoutBG.png
+    - black logo.png
+    - blurlaunch.png
+    - horizontalLogo.png
+    - logos
+      - aigenerated
+        - Designer (1).png
+        - Designer (2).png
+        - Designer (3).png
+        - Designer (4).png
+        - Designer (5).png
+        - Designer (6).png
+        - Designer (7).png
+        - Designer.png
+        - arena (1).png
+        - p.png
+      - colored bg
+        - Components
+          - HeroMainpage
+            - Herosection.jsx
+          - HouseIntro
+            - HouseIntro.jsx
+          - NavHeader
+            - Navheader.css
+            - Navheader.jsx
+        - kong img.png
+        - leo img.png
+        - phoenix.png
+        - tusker.png
+      - transparentbg
+        - kong logo wbg.png
+        - leo logo wbg.png
+        - phoenix logo wbg.png
+        - tusker logo wbg.png
+      - white bg
+        - 1.png
+        - 2.png
+        - 3.png
+        - 4.png
+    - p.png
+    - profiledp.png
+  - backendCalls
+    - index.js
+    - user.js
+  - conf
+  - index.css
+  - main.jsx
+- tailwind.config.js
+- vite.config.js
