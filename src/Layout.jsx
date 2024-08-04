@@ -4,6 +4,7 @@ import Navheader from "./Components/NavHeader/Navheader";
 import Footer from "./Components/Footer/Footer";
 
 function Layout() {
+  
   return (
     <div
       className="h-full bg-black"
@@ -16,6 +17,7 @@ function Layout() {
       <Navheader />
       <Outlet />
       <Footer />
+      
     </div>
   );
 }

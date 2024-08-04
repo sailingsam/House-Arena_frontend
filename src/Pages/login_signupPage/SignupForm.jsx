@@ -1,7 +1,16 @@
 import React, { useState } from "react";
-// import { RegisterUser } from "../../backendCalls/user";
-import { Button, Checkbox, Form, Input, InputNumber, Select, message } from "antd";
+import {
+  Button,
+  Checkbox,
+  Form,
+  Input,
+  InputNumber,
+  Select,
+  message,
+} from "antd";
 const { Option } = Select;
+import { RegisterUser } from "../../backendCalls/auth/registerUser";
+import { Navigate } from "react-router-dom";
 
 const formItemLayout = {
   labelCol: {
@@ -33,26 +42,28 @@ const tailFormItemLayout = {
     },
   },
 };
+
 export default () => {
   const [form] = Form.useForm();
-  const [isStudent, setIsStudent] = React.useState(false);
+  const [isStudent, setIsStudent] = useState(false);
   const [otpSent, setOtpSent] = useState(false);
   const [otp, setOtp] = useState("");
   const [otpVerified, setOtpVerified] = useState(false);
-  
+
   const onFinish = async (values) => {
     console.log("Received values of form: ", values);
     try {
       const res = await RegisterUser(values);
       if (res.success) {
-        message.success('yoo! -> '+res.message);
-        navigate('/login');
+        message.success("yoo! -> " + res.message);
+        // navigate("/login");
+        Navigate("/login");
       } else {
-        message.error('hi -> ' + res.message);
+        message.error("hi -> " + res.message);
       }
     } catch (error) {
       console.log(error);
-      message.error('no register -> ' + error.response.data.message);
+      message.error("no register -> " + error.response.data.message);
     }
   };
 
@@ -74,13 +85,16 @@ export default () => {
     // Get email from form
     const email = form.getFieldValue("email");
     try {
-      const response = await fetch("http://localhost:4999/api/users/register/otp/verify_otp", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email, otp }),
-      });
+      const response = await fetch(
+        "https://house-arena-backend.onrender.com/api/users/register/otp/send_otp",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ email, otp }),
+        }
+      );
       const data = await response.json();
       if (data.success) {
         setOtpVerified(true); // State to show final submit button
@@ -96,13 +110,16 @@ export default () => {
 
   const sendOtp = async (email) => {
     try {
-      const response = await fetch("http://localhost:4999/api/users/register/otp/send_otp", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email }),
-      });
+      const response = await fetch(
+        "https://house-arena-backend.onrender.com/api/users/register/otp/send_otp",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ email }),
+        }
+      );
       const data = await response.json();
       if (data.success) {
         setOtpSent(true); // State to show OTP input field
@@ -339,12 +356,12 @@ export default () => {
       </Form.Item>
 
       {otpVerified && (
-      <Form.Item {...tailFormItemLayout}>
-        <Button type="primary" htmlType="submit" className="bg-purple-900">
-          Register
-        </Button>
-      </Form.Item>
-    )}
+        <Form.Item {...tailFormItemLayout}>
+          <Button type="primary" htmlType="submit" className="bg-purple-900">
+            Register
+          </Button>
+        </Form.Item>
+      )}
     </Form>
   );
 };

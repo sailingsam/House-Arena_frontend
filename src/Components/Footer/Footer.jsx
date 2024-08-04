@@ -61,7 +61,7 @@ function Footer() {
         <div className="flex-1 space-y-6 justify-between sm:flex md:space-y-0">
           <ProjectInfo />
           {footerNavs.map((item, idx) => (
-            <ul className="space-y-4 text-gray-300" key={idx}>
+            <ul className="space-y-2 text-gray-300 mx-1" key={idx}>
               <h4 className="text-gray-200 font-semibold mt-10 sm:pb-2">
                 {item.label}
               </h4>
@@ -69,7 +69,7 @@ function Footer() {
                 <li key={idx}>
                   <a
                     href={el.href}
-                    className="duration-150 hover:text-gray-400"
+                    className="duration-150 hover:text-gray-400 text-sm"
                   >
                     {el.name}
                   </a>
