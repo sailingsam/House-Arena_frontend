@@ -3,7 +3,7 @@ import "./Navheader.css";
 // import horizontalLogo from "../../assets/horizontalLogo.png";
 import HAwhiteblock from "../../assets/HAlogosvg/HAwhiteblock.svg";
 import { NavLink } from "react-router-dom";
-import { Tooltip } from "antd";
+import { Tooltip, message } from "antd";
 
 function Navheader() {
   const [state, setState] = useState(false);
@@ -122,7 +122,8 @@ function Navheader() {
               {/* signup */}
               <li className="mt-4 lg:mt-0">
                 <NavLink
-                  to="/signup"
+                  // to="/signup"
+                  onClick={() => {message.info("This feature is not available yet.")}}
                   className="py-3 px-4 text-center border text-white hover:text-indigo-600 rounded-md block lg:inline lg:border-0"
                 >
                   <span>Sign up</span>
@@ -130,14 +131,9 @@ function Navheader() {
               </li>
               {/* github logo */}
               <li className="mt-8 lg:mt-0">
-                {/* <a
-                  href="javascript:void(0)"
-                  className="py-3 px-4 text-center text-white bg-indigo-600 hover:bg-indigo-700 rounded-md shadow block lg:inline"
-                >
-                  Sign Up
-                </a> */}
                 <NavLink
-                  to="/login"
+                  // to="/login"
+                  onClick={() => {message.info("This feature is not available yet.")}}
                   className="py-3 px-4 text-center text-white bg-indigo-600 hover:bg-indigo-700 rounded-md shadow block lg:inline"
                 >
                   <span>Log In</span>

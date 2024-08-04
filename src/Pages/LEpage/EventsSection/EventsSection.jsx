@@ -113,6 +113,7 @@ export default () => {
                   <td className="px-6 py-4 whitespace-nowrap">{item.name}</td>
                   <td className="px-6 py-4 whitespace-nowrap">
                     {(() => {
+                      if (!item.date) return "No data";
                       const date = new Date(item.date);
                       const day = String(date.getDate()).padStart(2, "0");
                       const month = String(date.getMonth() + 1).padStart(

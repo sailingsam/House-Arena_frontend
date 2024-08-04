@@ -18,6 +18,7 @@ import KongPage from "./Pages/HousePages/KongPage/KongPage.jsx";
 import LeoPage from "./Pages/HousePages/LeoPages/LeoPage.jsx";
 import PhoenixPage from "./Pages/HousePages/PhoenixPages/PhoenixPage.jsx";
 import TuskerPage from "./Pages/HousePages/TuskerPage/TuskerPage.jsx";
+import ProtectedRoute from "./Components/ProtectedRoute.js";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
