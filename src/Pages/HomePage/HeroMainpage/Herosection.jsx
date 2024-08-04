@@ -21,7 +21,7 @@ export default () => {
         </p>
         <div className="sm:pt-10 text-center items-center justify-center space-y-3 sm:space-x-6 sm:space-y-0 sm:flex lg:justify-start">
           <NavLink
-            to="/leaderboard&events"
+            to="/leaderboardandevents"
             className="m-auto sm:m-0 mb-5 flex justify-center items-center border-2 border-radius border-white-200 overflow-hidden w-fit p-1 rounded-full shadow-lg"
           >
             <button className="bg-[linear-gradient(#e9e9e9,#e9e9e9_50%,#fff)] group w-50 h-14 inline-flex transition-all duration-300 overflow-visible p-1 rounded-full group">

@@ -11,7 +11,7 @@ function Navheader() {
 
   const navigation = [
     { title: "Home", path: "/" },
-    { title: "LeaderBoard & Events", path: "/leaderboard&events" },
+    { title: "LeaderBoard & Events", path: "/leaderboardandevents" },
     // { title: "House Gates", path: "javascript:void(0)" },
   ];
 
