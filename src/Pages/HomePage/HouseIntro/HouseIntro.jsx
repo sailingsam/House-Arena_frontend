@@ -7,15 +7,15 @@ import { NavLink } from "react-router-dom";
 export default () => {
   const houseData = [
     {
-      name: "House of Kong",
-      attribute: "Curiosity",
-      logo: konglogo,
+      name: "House of Tusker",
+      attribute: "Respect",
+      logo: tuskerlogo,
       themecss: {
-        bgGradient: "from-blue-400 to-blue-800",
-        textGradient: "from-blue-500 to-blue-500",
-        textColor: "text-gray-600 dark:text-blue-500",
+        bgGradient: "from-green-500 to-green-700",
+        textGradient: "from-green-500 to-green-500",
+        textColor: "text-gray-600 dark:text-green-500",
       },
-      pagelink:"/houseofkong"
+      pagelink:"/houseoftusker"
     },
     {
       name: "House of Leo",
@@ -29,6 +29,17 @@ export default () => {
       pagelink:"/houseofleo"
     },
     {
+      name: "House of Kong",
+      attribute: "Curiosity",
+      logo: konglogo,
+      themecss: {
+        bgGradient: "from-blue-400 to-blue-800",
+        textGradient: "from-blue-500 to-blue-500",
+        textColor: "text-gray-600 dark:text-blue-500",
+      },
+      pagelink:"/houseofkong"
+    },
+    {
       name: "House of Phoenix",
       attribute: "Excellence",
       logo: phoenixlogo,
@@ -38,17 +49,6 @@ export default () => {
         textColor: "text-gray-600 dark:text-red-500",
       },
       pagelink:"/houseofphoenix"
-    },
-    {
-      name: "House of Tusker",
-      attribute: "Respect",
-      logo: tuskerlogo,
-      themecss: {
-        bgGradient: "from-green-500 to-green-700",
-        textGradient: "from-green-500 to-green-500",
-        textColor: "text-gray-600 dark:text-green-500",
-      },
-      pagelink:"/houseoftusker"
     },
   ];
 
