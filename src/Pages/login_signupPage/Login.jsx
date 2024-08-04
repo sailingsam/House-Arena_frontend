@@ -1,13 +1,35 @@
-import HouseArenaLogo from "../../assets/HAwhiteWithoutBG.png";
-import HouseArenaBlackLogo from "../../assets/HAblackWithoutBG.png";
-import { NavLink } from "react-router-dom";
+import React, { useState } from "react";
+import HAwhiteblock from "../../assets/HAlogosvg/HAwhiteblock.svg";
+import { NavLink, useNavigate } from "react-router-dom";
+import HAblackblock from "../../assets/HAlogosvg/HAblackblock.svg";
+import { Form, Input, Button, message } from "antd";
+import { loginUser } from "../../backendCalls/auth/loginUser";
 
 export default () => {
+  const navigate = useNavigate();
+
+  const onFinish = async (values) => {
+    console.log("Received values of form: ", values);
+    try {
+      const res = await loginUser(values);
+      if (res.success) {
+        message.success("Welcome back! -> " + res.message);
+        localStorage.setItem("token", res.token);
+        navigate("/");
+      } else {
+        message.error("Login failed -> " + res.message);
+      }
+    } catch (error) {
+      console.log(error);
+      message.error("Login error -> " + error.message);
+    }
+  };
+
   return (
     <main className="w-full flex">
       <div className="relative flex-1 hidden items-center justify-center h-screen bg-gray-900 lg:flex">
         <div className="relative z-10 w-full max-w-md">
-          <img src={HouseArenaLogo} width={450} />
+          <img src={HAwhiteblock} width={450} />
           <div className=" mt-16 space-y-3">
             <h3 className="text-white text-3xl font-bold">
               Unlock the Gateway to Your House's Glory!
@@ -54,17 +76,13 @@ export default () => {
       </div>
       <div className="flex-1 flex items-center justify-center h-screen bg-white">
         <div className="w-full max-w-md space-y-4 px-10  text-gray-600 sm:px-0">
-          <img
-            src={HouseArenaBlackLogo}
-            width={150}
-            className="lg:hidden m-auto"
-          />
+          <img src={HAblackblock} width={250} className="lg:hidden m-auto" />
           <div className="flex-col text-center justify-around items-center space-y-2">
             <h3 className="text-gray-800 text-2xl font-bold sm:text-3xl mb-2">
               Log in
             </h3>
-            <p className="">
-              What! You have not yet registered!{" "}
+            <p className="font-semibold text-gray-400">
+              What! Not yet registered!{" "}
               <NavLink
                 to="/signup"
                 className="font-medium text-indigo-600 hover:text-indigo-500 border-2 border-gray-400 px-1"
@@ -73,35 +91,37 @@ export default () => {
               </NavLink>
             </p>
           </div>
-          <form onSubmit={(e) => e.preventDefault()} className="space-y-5">
-            <div>
-              <label className="font-medium">
-                <span className="text-red-600">* </span>Email
-              </label>
-              <input
+
+          <Form onFinish={onFinish} className="space-y-5">
+            <Form.Item
+              name="email"
+              rules={[{ required: true, message: "Please input your Email!" }]}
+            >
+              <Input
                 type="email"
-                required
                 placeholder="@sst.scaler.com / @scaler.com"
                 className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-full"
               />
-            </div>
-            <div>
-              <label className="font-medium">
-                <span className="text-red-600">* </span>Password
-              </label>
-              <input
-                type="password"
-                required
+            </Form.Item>
+            <Form.Item
+              name="password"
+              rules={[{ required: true, message: "Please input your Password!" }]}
+            >
+              <Input.Password
                 placeholder="********"
                 className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-full"
               />
-            </div>
+            </Form.Item>
             <div className="flex-col justify-center text-center">
-              <button className="max-w-fit px-4 py-2 text-white font-medium bg-indigo-600 hover:bg-indigo-500 active:bg-indigo-600 rounded-full duration-150">
+              <Button
+                type="primary"
+                htmlType="submit"
+                className="max-w-fit px-4 py-2 text-white font-medium bg-indigo-600 hover:bg-indigo-500 active:bg-indigo-600 rounded-full duration-150"
+              >
                 Let's Dive In
-              </button>
+              </Button>
             </div>
-          </form>
+          </Form>
         </div>
       </div>
     </main>

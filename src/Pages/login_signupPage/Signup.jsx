@@ -1,6 +1,4 @@
-// import HouseArenaLogo from "../../assets/HAwhiteWithoutBG.png";
 import HAwhiteblock from "../../assets/HAlogosvg/HAwhiteblock.svg";
-// import HouseArenaBlackLogo from "../../assets/HAblackWithoutBG.png";
 import HAblackblock from "../../assets/HAlogosvg/HAblackblock.svg";
 import { NavLink } from "react-router-dom";
 import SignupForm from "./SignupForm";
