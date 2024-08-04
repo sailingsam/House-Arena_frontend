@@ -10,7 +10,7 @@ import {
 } from "antd";
 const { Option } = Select;
 import { RegisterUser } from "../../backendCalls/auth/registerUser";
-import { Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const formItemLayout = {
   labelCol: {
@@ -47,8 +47,9 @@ export default () => {
   const [form] = Form.useForm();
   const [isStudent, setIsStudent] = useState(false);
   const [otpSent, setOtpSent] = useState(false);
-  const [otp, setOtp] = useState("");
+  // const [otp, setOtp] = useState("");
   const [otpVerified, setOtpVerified] = useState(false);
+  const navigate = useNavigate();
 
   const onFinish = async (values) => {
     console.log("Received values of form: ", values);
@@ -56,14 +57,13 @@ export default () => {
       const res = await RegisterUser(values);
       if (res.success) {
         message.success("yoo! -> " + res.message);
-        // navigate("/login");
-        Navigate("/login");
+        navigate("/login");
       } else {
         message.error("hi -> " + res.message);
       }
     } catch (error) {
       console.log(error);
-      message.error("no register -> " + error.response.data.message);
+      message.error("no register -> " + error.message);
     }
   };
 
@@ -73,26 +73,22 @@ export default () => {
     if (email) {
       sendOtp(email);
     } else {
-      message.error("Please enter your email");
+      message.error("Please enter correct email");
     }
   };
 
-  const handleOtpChange = (e) => {
-    setOtp(e.target.value);
-  };
-
   const handleVerifyOtp = async () => {
-    // Get email from form
     const email = form.getFieldValue("email");
+    const otpentered = form.getFieldValue("otp");
     try {
       const response = await fetch(
-        "https://house-arena-backend.onrender.com/api/users/register/otp/send_otp",
+        "https://house-arena-backend.onrender.com/api/users/register/otp/verify_otp",
         {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ email, otp }),
+          body: JSON.stringify({ email, otp: otpentered }),
         }
       );
       const data = await response.json();
@@ -191,7 +187,7 @@ export default () => {
       {/* OTP Button */}
       <Form.Item {...tailFormItemLayout}>
         <Button type="primary" onClick={handleGetOtpClick}>
-          Get OTP
+          Send OTP
         </Button>
       </Form.Item>
 
@@ -207,7 +203,7 @@ export default () => {
             },
           ]}
         >
-          <Input onChange={handleOtpChange} />
+          <Input />
         </Form.Item>
       )}
       {/* Verify OTP Button */}
