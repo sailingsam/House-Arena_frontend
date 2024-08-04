@@ -25,7 +25,7 @@ const router = createBrowserRouter(
     <>
       <Route path="/" element={<Layout />}>
         <Route path="" element={<HomePage />} />
-        <Route path="leaderboard&events" element={<Leaderboard />} />
+        <Route path="leaderboardandevents" element={<Leaderboard />} />
       </Route>
       
       <Route path="/houseofkong" element={<KongPage />}></Route>
