@@ -12,11 +12,11 @@ export default () => {
     infinite: true,
     slidesToShow: 4,
     slidesToScroll: 1,
-    autoplay: !isPaused,
-    speed: 5000,
-    autoplaySpeed: 0,
+    autoplay: true,
+    speed: 1000, // Adjusted for smoother transition
+    autoplaySpeed: 2000, // Adjusted for smoother autoplay
     cssEase: "linear",
-    pauseOnHover: false, // We'll handle this manually
+    pauseOnHover: false,
     arrows: false,
   };
 
