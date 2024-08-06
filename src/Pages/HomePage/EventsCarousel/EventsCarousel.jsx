@@ -4,8 +4,6 @@ import React, { useState, useRef } from "react";
 import Slider from "react-slick";
 
 export default () => {
-  const [isPaused, setIsPaused] = useState(false);
-  const sliderRef = useRef(null);
 
   const settings = {
     dots: false,
@@ -13,31 +11,15 @@ export default () => {
     slidesToShow: 4,
     slidesToScroll: 1,
     autoplay: true,
-    speed: 1000, // Adjusted for smoother transition
-    autoplaySpeed: 2000, // Adjusted for smoother autoplay
-    cssEase: "linear",
-    pauseOnHover: false,
+    speed: 3000,
+    autoplaySpeed: 2000,
+    pauseOnHover: true,
     arrows: false,
-  };
-
-  const handleMouseEnter = () => {
-    setIsPaused(true);
-    if (sliderRef.current) {
-      sliderRef.current.slickPause();
-    }
-  };
-
-  const handleMouseLeave = () => {
-    setIsPaused(false);
-    if (sliderRef.current) {
-      sliderRef.current.slickPlay();
-    }
   };
 
   return (
     <div className="flex justify-center items-center my-auto">
       <Slider
-        ref={sliderRef}
         {...settings}
         className="flex justify-center items-center mb-20 w-3/4 max-w-7xl mx-auto"
       >
@@ -45,8 +27,6 @@ export default () => {
           <div
             key={index}
             className="rounded-xl h-20 sm:h-40 w-44 flex justify-center items-center mr-5 px-2"
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
           >
             <img
               src={event.image}
