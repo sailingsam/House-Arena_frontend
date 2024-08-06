@@ -3,9 +3,23 @@ import kong from '../../../assets/logos/white bg/kong.png';
 import leo from '../../../assets/logos/white bg/leo.png';
 import phoenix from '../../../assets/logos/white bg/phoenix.png';
 import tusker from '../../../assets/logos/white bg/tusker.png';
+import goldMedal from '../../../assets/medals/gold-medal.png';
+import silverMedal from '../../../assets/medals/silver-medal.png';
+import bronzeMedal from '../../../assets/medals/bronze-medal.png';
 import { useSelector } from "react-redux";
 
 export default () => {
+  const medalImages = {
+    0: goldMedal,
+    1: silverMedal,
+    2: bronzeMedal
+  };
+
+  const MedalIcon = ({ idx }) => {
+    const medalSrc = medalImages[idx];
+    return medalSrc ? <img src={medalSrc} className="w-6 h-6 inline ml-2"/> : null;
+  };
+  
   const housePoints = useSelector((state) => state.totalHousePoints);
   const tableItems = [
     {
@@ -58,7 +72,9 @@ export default () => {
                   <td className="flex items-center gap-x-3 py-3 px-4 lg:mr-10 whitespace-nowrap">
                     <img src={item.avatar} className="w-10 h-10 rounded-full" />
                     <div>
-                      <span className={`${idx==0 ? "font-bold":""}`}>{item.name}</span>
+                      <span className={`${idx==0 ? "font-bold":""}`}>{item.name}
+                        {idx < 3 && <MedalIcon idx={idx} />}
+                      </span>
                     </div>
                   </td>
                   <td className={`${idx==0 ? "font-bold":""} px-6 py-4 whitespace-nowrap text-center`}>
