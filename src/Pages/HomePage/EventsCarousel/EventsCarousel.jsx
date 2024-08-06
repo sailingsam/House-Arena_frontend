@@ -1,33 +1,56 @@
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import React from "react";
+import React, { useState, useRef } from "react";
 import Slider from "react-slick";
 
 export default () => {
+  const [isPaused, setIsPaused] = useState(false);
+  const sliderRef = useRef(null);
+
   const settings = {
     dots: false,
     infinite: true,
     slidesToShow: 4,
     slidesToScroll: 1,
-    autoplay: true,
+    autoplay: !isPaused,
     speed: 5000,
     autoplaySpeed: 0,
     cssEase: "linear",
-    pauseOnHover: true,
+    pauseOnHover: false, // We'll handle this manually
     arrows: false,
   };
+
+  const handleMouseEnter = () => {
+    setIsPaused(true);
+    if (sliderRef.current) {
+      sliderRef.current.slickPause();
+    }
+  };
+
+  const handleMouseLeave = () => {
+    setIsPaused(false);
+    if (sliderRef.current) {
+      sliderRef.current.slickPlay();
+    }
+  };
+
   return (
     <div className="flex justify-center items-center my-auto">
       <Slider
+        ref={sliderRef}
         {...settings}
         className="flex justify-center items-center mb-20 w-3/4 max-w-7xl mx-auto"
-
       >
-        {data.events.map((event) => (
-          <div className="rounded-xl h-20 sm:h-40 w-44 flex justify-center items-center mr-5 px-2">
+        {data.events.map((event, index) => (
+          <div
+            key={index}
+            className="rounded-xl h-20 sm:h-40 w-44 flex justify-center items-center mr-5 px-2"
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+          >
             <img
               src={event.image}
-              alt={event.title}
+              alt={event.title || `Event ${index + 1}`}
               className="rounded-lg m-auto h-full w-full object-cover"
             />
           </div>
