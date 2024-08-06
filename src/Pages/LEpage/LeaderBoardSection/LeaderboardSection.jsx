@@ -4,8 +4,18 @@ import leo from '../../../assets/logos/white bg/leo.png';
 import phoenix from '../../../assets/logos/white bg/phoenix.png';
 import tusker from '../../../assets/logos/white bg/tusker.png';
 import { useSelector } from "react-redux";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMedal } from '@fortawesome/free-solid-svg-icons';
 
 export default () => {
+  const MedalIcon = ({ idx }) => {
+    let color;
+    if (idx === 0) color = 'text-yellow-500'; // Gold
+    else if (idx === 1) color = 'text-gray-400'; // Silver
+    else if (idx === 2) color = 'text-yellow-800'; // Bronze
+  
+    return <FontAwesomeIcon icon={faMedal} className={`w-6 h-6 ${color}`} />;
+  };
   const housePoints = useSelector((state) => state.totalHousePoints);
   const tableItems = [
     {
@@ -50,6 +60,7 @@ export default () => {
               <tr>
                 <th className="py-3 px-6">House</th>
                 <th className="py-3 px-6">Points</th>
+                <th className="py-3 px-6">Medals</th>
               </tr>
             </thead>
             <tbody className="text-white text-lg divide-y">
@@ -63,6 +74,9 @@ export default () => {
                   </td>
                   <td className={`${idx==0 ? "font-bold":""} px-6 py-4 whitespace-nowrap text-center`}>
                     {item.totalpoints}
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-center">
+                     {idx < 3 && <MedalIcon idx={idx} />}
                   </td>
                 </tr>
               ))}
