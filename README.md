@@ -75,7 +75,9 @@ The backend for this project is built using Express, Node.js, and MongoDB. You c
 
 ## Contributing
 
-Contributions are welcome! Please fork the repository and create a pull request with your changes.
+All code contributions must go through a pull request and be approved by a core developer before being merged. This is to ensure a proper review of all the code.
+
+We truly ❤️ pull requests! If you wish to help, you can learn more about how you can contribute to this project in the [**contribution guide**](https://github.com/sailingsam/house_arena_react-vite/blob/main/CONTRIBUTING.md).
 
 ## Contact
 
