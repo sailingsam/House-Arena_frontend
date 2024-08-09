@@ -1,10 +1,13 @@
 # House Arena
 
-Welcome to the House Arena frontend repository! This project is designed to foster a competitive spirit within the student community by allowing you to track house points, view past events, and celebrate achievements. This repository contains the frontend code for the House Arena application built using React and Vite.
+Welcome to the **House Arena frontend repository**!
+
+I made this project as part of **Buildspace N&W's5** Project as well as my *MERN* course project.
+
+This project is designed to foster a competitive spirit within the *SST* student community by allowing you to track house points, view past events, and celebrate achievements. This repository contains the frontend code for the House Arena application built using React and Vite.
 
 # Backend
-
-[Backend repository](https://github.com/sailingsam/house-arena-backend)
+for backend please use this link as reference: [Backend repository](https://github.com/sailingsam/house-arena-backend)
 
 ## Table of Contents
 
