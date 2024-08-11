@@ -48,7 +48,7 @@ Ensure you have the following installed on your local machine:
 1. Clone the repository:
 
    ```sh
-   git clone https://github.com/sailingsam/house_arena_react-vite.git
+   git clone https://github.com/sailingsam/House-Arena_frontend.git
    ```
 
 2. Navigate to the project directory:
@@ -77,7 +77,7 @@ The backend for this project is built using Express, Node.js, and MongoDB. You c
 
 All code contributions must go through a pull request and be approved by a core developer before being merged. This is to ensure a proper review of all the code.
 
-We truly ❤️ pull requests! If you wish to help, you can learn more about how you can contribute to this project in the [**contribution guide**](https://github.com/sailingsam/house_arena_react-vite/blob/main/CONTRIBUTING.md).
+We truly ❤️ pull requests! If you wish to help, you can learn more about how you can contribute to this project in the [**contribution guide**](https://github.com/sailingsam/House-Arena_frontend/blob/main/CONTRIBUTING.md).
 
 ## Contact
 

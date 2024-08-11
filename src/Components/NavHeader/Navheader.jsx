@@ -75,7 +75,7 @@ function Navheader() {
               <li className="mt-8 mb-8 lg:mt-0 lg:mb-0">
                 <Tooltip title="Contribute on Github">
                   <a
-                    href="https://github.com/sailingsam/house_arena_react-vite"
+                    href="https://github.com/sailingsam/House-Arena_frontend"
                     target="_blank"
                   >
                     <svg

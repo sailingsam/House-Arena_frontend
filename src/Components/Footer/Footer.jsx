@@ -14,7 +14,7 @@ function Footer() {
       label: "Resources",
       items: [
         {
-          href: "https://github.com/sailingsam/house_arena_react-vite",
+          href: "https://github.com/sailingsam/House-Arena_frontend",
           name: "Github",
         },
       ],
