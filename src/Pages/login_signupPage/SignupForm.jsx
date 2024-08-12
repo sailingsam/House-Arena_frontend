@@ -44,7 +44,7 @@ const tailFormItemLayout = {
   },
 };
 
-export default () => {
+export default SignupForm = () => {
   const [form] = Form.useForm();
   const [isStudent, setIsStudent] = useState(false);
   const [otpSent, setOtpSent] = useState(false);
