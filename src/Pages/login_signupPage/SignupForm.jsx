@@ -87,7 +87,7 @@ export default () => {
     const otpentered = form.getFieldValue("otp");
     try {
       const response = await fetch(
-        "https://house-arena-backend.onrender.com/api/users/register/otp/verify_otp",
+        `${import.meta.env.VITE_BASE_URL_BACKEND}/api/users/register/otp/verify_otp`,
         {
           method: "POST",
           headers: {
@@ -112,7 +112,7 @@ export default () => {
   const sendOtp = async (email) => {
     try {
       const response = await fetch(
-        "https://house-arena-backend.onrender.com/api/users/register/otp/send_otp",
+        `${import.meta.env.VITE_BASE_URL_BACKEND}/api/users/register/otp/send_otp`,
         {
           method: "POST",
           headers: {
