@@ -120,7 +120,7 @@ function Navheader() {
                 </Tooltip>
               </li>
               {/* signup */}
-              <li className="mt-4 lg:mt-0">
+              {/* <li className="mt-4 lg:mt-0">
                 <NavLink
                   to="/signup"
                   // onClick={() => {message.info("This feature is not available yet.")}}
@@ -128,7 +128,7 @@ function Navheader() {
                 >
                   <span>Admin Sign up</span>
                 </NavLink>
-              </li>
+              </li> */}
               {/* github logo */}
               <li className="mt-8 lg:mt-0">
                 <NavLink

@@ -1,6 +1,7 @@
 import HAwhiteblock from "../../assets/HAlogosvg/HAwhiteblock.svg";
 import HAblackblock from "../../assets/HAlogosvg/HAblackblock.svg";
 import { NavLink } from "react-router-dom";
+// import {SignupForm} from "./SignupForm";
 import SignupForm from "./SignupForm";
 
 export default () => {
