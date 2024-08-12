@@ -122,8 +122,8 @@ function Navheader() {
               {/* signup */}
               <li className="mt-4 lg:mt-0">
                 <NavLink
-                  // to="/signup"
-                  onClick={() => {message.info("This feature is not available yet.")}}
+                  to="/signup"
+                  // onClick={() => {message.info("This feature is not available yet.")}}
                   className="py-3 px-4 text-center border text-white hover:text-indigo-600 rounded-md block lg:inline lg:border-0"
                 >
                   <span>Sign up</span>
@@ -132,8 +132,8 @@ function Navheader() {
               {/* github logo */}
               <li className="mt-8 lg:mt-0">
                 <NavLink
-                  // to="/login"
-                  onClick={() => {message.info("This feature is not available yet.")}}
+                  to="/login"
+                  // onClick={() => {message.info("This feature is not available yet.")}}
                   className="py-3 px-4 text-center text-white bg-indigo-600 hover:bg-indigo-700 rounded-md shadow block lg:inline"
                 >
                   <span>Log In</span>
