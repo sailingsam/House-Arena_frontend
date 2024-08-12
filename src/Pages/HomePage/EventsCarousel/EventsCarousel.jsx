@@ -1,33 +1,36 @@
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import React from "react";
+import React, { useState, useRef } from "react";
 import Slider from "react-slick";
 
 export default () => {
+
   const settings = {
     dots: false,
     infinite: true,
     slidesToShow: 4,
     slidesToScroll: 1,
     autoplay: true,
-    speed: 5000,
-    autoplaySpeed: 0,
-    cssEase: "linear",
+    speed: 3000,
+    autoplaySpeed: 2000,
     pauseOnHover: true,
     arrows: false,
   };
+
   return (
     <div className="flex justify-center items-center my-auto">
       <Slider
         {...settings}
         className="flex justify-center items-center mb-20 w-3/4 max-w-7xl mx-auto"
-
       >
-        {data.events.map((event) => (
-          <div className="rounded-xl h-20 sm:h-40 w-44 flex justify-center items-center mr-5 px-2">
+        {data.events.map((event, index) => (
+          <div
+            key={index}
+            className="rounded-xl h-20 sm:h-40 w-44 flex justify-center items-center mr-5 px-2"
+          >
             <img
               src={event.image}
-              alt={event.title}
+              alt={event.title || `Event ${index + 1}`}
               className="rounded-lg m-auto h-full w-full object-cover"
             />
           </div>

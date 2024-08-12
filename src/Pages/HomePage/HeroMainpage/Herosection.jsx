@@ -32,7 +32,7 @@ export default () => {
               </div>
             </button>
           </NavLink>
-          <a href={"https://github.com/sailingsam/house_arena_react-vite"} target="_blank">
+          <a href={"https://github.com/sailingsam/House-Arena_frontend"} target="_blank">
             <button class="text-zinc-400 hover:text-purple-600 backdrop-blur-lg bg-gradient-to-tr from-transparent via-[rgba(121,121,121,0.16)] to-transparent rounded-md py-2 px-6 shadow hover:shadow-purple-600 duration-700">
               Contribute
             </button>

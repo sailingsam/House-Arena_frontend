@@ -19,6 +19,7 @@ import LeoPage from "./Pages/HousePages/LeoPages/LeoPage.jsx";
 import PhoenixPage from "./Pages/HousePages/PhoenixPages/PhoenixPage.jsx";
 import TuskerPage from "./Pages/HousePages/TuskerPage/TuskerPage.jsx";
 import ProtectedRoute from "./Components/ProtectedRoute.js";
+import { Analytics } from "@vercel/analytics/react";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -43,6 +44,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <Provider store={store}>
       <RouterProvider router={router} />
+      <Analytics />
     </Provider>
   </React.StrictMode>
 );

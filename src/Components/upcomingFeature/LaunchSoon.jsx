@@ -17,7 +17,7 @@ export default () => {
               We are working hard to bring you the best experience possible.
             </p>
             <NavLink
-              to="https://github.com/sailingsam/house_arena_react-vite  "
+              to="https://github.com/sailingsam/House-Arena_frontend  "
               className="block py-2 px-3 ml-2 text-white font-medium bg-indigo-600 duration-150 hover:bg-indigo-500 active:bg-indigo-700 rounded-3xl shadow-lg hover:shadow-none"
             >
               Contribute
