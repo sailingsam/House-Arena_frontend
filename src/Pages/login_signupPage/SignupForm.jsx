@@ -30,6 +30,7 @@ const formItemLayout = {
     },
   },
 };
+
 const tailFormItemLayout = {
   wrapperCol: {
     xs: {
@@ -47,7 +48,6 @@ export default () => {
   const [form] = Form.useForm();
   const [isStudent, setIsStudent] = useState(false);
   const [otpSent, setOtpSent] = useState(false);
-  // const [otp, setOtp] = useState("");
   const [otpVerified, setOtpVerified] = useState(false);
   const navigate = useNavigate();
 
@@ -59,21 +59,26 @@ export default () => {
         message.success("yoo! -> " + res.message);
         navigate("/login");
       } else {
-        message.error("hi -> " + res.message);
+        message.error("oops! " + res.message);
       }
     } catch (error) {
       console.log(error);
-      message.error("no register -> " + error.message);
+      message.error("can't register -> " + error.message);
     }
   };
 
-  const handleGetOtpClick = () => {
-    // Get email from form
+  const handleGetOtpClick = async () => {
     const email = form.getFieldValue("email");
     if (email) {
-      sendOtp(email);
+      try {
+        await sendOtp(email);
+        message.success("OTP sent successfully");
+        setOtpSent(true);
+      } catch (error) {
+        message.error("Failed to send OTP");
+      }
     } else {
-      message.error("Please enter correct email");
+      message.error("Please enter a valid email");
     }
   };
 
@@ -93,14 +98,14 @@ export default () => {
       );
       const data = await response.json();
       if (data.success) {
-        setOtpVerified(true); // State to show final submit button
         message.success("OTP verified successfully");
+        setOtpVerified(true);
+        
       } else {
         message.error("Invalid OTP");
       }
     } catch (error) {
       console.error("Error verifying OTP:", error);
-      message.error("Failed to verify OTP");
     }
   };
 
@@ -184,37 +189,27 @@ export default () => {
           onChange={handleEmailChange}
         />
       </Form.Item>
-      {/* OTP Button */}
-      <Form.Item {...tailFormItemLayout}>
-        <Button type="primary" onClick={handleGetOtpClick}>
-          Send OTP
-        </Button>
-      </Form.Item>
 
-      {/* OTP Input Field */}
-      {otpSent && (
-        <Form.Item
-          name="otp"
-          label="OTP"
-          rules={[
-            {
-              required: true,
-              message: "Please input the OTP sent to your email!",
-            },
-          ]}
-        >
-          <Input />
-        </Form.Item>
-      )}
-      {/* Verify OTP Button */}
-      {otpSent && (
+      {!otpVerified && (
         <Form.Item {...tailFormItemLayout}>
-          <Button type="primary" onClick={handleVerifyOtp}>
-            Verify OTP
+          <Button type="primary" onClick={handleGetOtpClick}>
+            {otpSent ? "Resend OTP" : "Send OTP"}
           </Button>
         </Form.Item>
       )}
-      {/* Show Final Submit Button if OTP is verified */}
+
+      {!otpVerified && otpSent && (
+        <>
+          <Form.Item name="otp" label="OTP" rules={[{ required: true }]}>
+            <Input />
+          </Form.Item>
+          <Form.Item {...tailFormItemLayout}>
+            <Button type="primary" onClick={handleVerifyOtp}>
+              Verify OTP
+            </Button>
+          </Form.Item>
+        </>
+      )}
 
       <Form.Item
         name="password"
@@ -310,21 +305,6 @@ export default () => {
               <Option value="Phoenix">Phoenix</Option>
               <Option value="Tusker">Tusker</Option>
             </Select>
-          </Form.Item>
-
-          <Form.Item
-            name="leetcode_id"
-            label="Leetcode Id"
-            tooltip="Your official leetcode id"
-            rules={[
-              {
-                required: true,
-                message: "Please input your leetcode official id!",
-                whitespace: true,
-              },
-            ]}
-          >
-            <Input />
           </Form.Item>
         </>
       )}

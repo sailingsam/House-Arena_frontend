@@ -62,7 +62,7 @@ export default () => {
           />
           <div className="flex-col text-center justify-around items-center mt-5 space-y-2">
             <h3 className="text-gray-800 text-2xl font-bold sm:text-3xl mb-1">
-              Sign up
+              Admin Sign Up
             </h3>
             <p className="">
               Already have account!{" "}

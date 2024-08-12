@@ -22,7 +22,7 @@ export const fetchEvents = () => {
   return async (dispatch) => {
     dispatch(fetchEventsRequest());
     try {
-      const response = await axios.get('https://house-arena-backend.onrender.com/api/events');
+      const response = await axios.get(`${import.meta.env.VITE_BASE_URL_BACKEND}/api/events`);
       dispatch(fetchEventsSuccess(response.data));
     } catch (error) {
       dispatch(fetchEventsFailure(error.message));

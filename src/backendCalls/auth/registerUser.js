@@ -2,7 +2,7 @@ import axios from "axios";
 
 export const RegisterUser = async (values) => {
     try {
-        const res = await axios.post("https://house-arena-backend.onrender.com/api/users/register", values, {
+        const res = await axios.post(`${import.meta.env.VITE_BASE_URL_BACKEND}/api/users/register`, values, {
             Headers: {
                 "Content-Type": "application/json",
             },

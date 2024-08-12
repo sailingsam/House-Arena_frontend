@@ -126,7 +126,7 @@ function Navheader() {
                   // onClick={() => {message.info("This feature is not available yet.")}}
                   className="py-3 px-4 text-center border text-white hover:text-indigo-600 rounded-md block lg:inline lg:border-0"
                 >
-                  <span>Sign up</span>
+                  <span>Admin Sign up</span>
                 </NavLink>
               </li>
               {/* github logo */}
@@ -134,9 +134,9 @@ function Navheader() {
                 <NavLink
                   to="/login"
                   // onClick={() => {message.info("This feature is not available yet.")}}
-                  className="py-3 px-4 text-center text-white bg-indigo-600 hover:bg-indigo-700 rounded-md shadow block lg:inline"
+                  className="py-3 px-4 text-center text-white bg-purple-700 hover:bg-purple-800 rounded-md shadow block lg:inline"
                 >
-                  <span>Log In</span>
+                  <span>Admin Log In</span>
                 </NavLink>
               </li>
             </ul>
