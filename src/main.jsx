@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import ReactDOM from "react-dom/client";
 import HomePage from "./Pages/HomePage/HomePage.jsx";
 import Leaderboard from "./Pages/LEpage/LeaderboardAndEvents.jsx";
@@ -12,7 +12,7 @@ import {
   RouterProvider,
   createRoutesFromElements,
 } from "react-router-dom";
-import { Provider } from "react-redux";
+import { Provider, useDispatch } from "react-redux";
 import store from './redux/store.js';
 import KongPage from "./Pages/HousePages/KongPage/KongPage.jsx";
 import LeoPage from "./Pages/HousePages/LeoPages/LeoPage.jsx";
@@ -20,6 +20,9 @@ import PhoenixPage from "./Pages/HousePages/PhoenixPages/PhoenixPage.jsx";
 import TuskerPage from "./Pages/HousePages/TuskerPage/TuskerPage.jsx";
 import ProtectedRoute from "./Components/ProtectedRoute.js";
 import { Analytics } from "@vercel/analytics/react";
+import { setUser } from "./redux/actions/authActions.js";
+import { isTokenValid } from "./utils/auth.js";
+import { Root } from "postcss";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -40,10 +43,23 @@ const router = createBrowserRouter(
   )
 );
 
+const App = () => {
+  const dispatch = useDispatch();
+  
+  useEffect(() => {
+    const user = isTokenValid();
+    if (user) {
+      dispatch(setUser(user));
+    }
+  }, [dispatch]);
+
+  return <RouterProvider router={router} />;
+};
+
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <Provider store={store}>
-      <RouterProvider router={router} />
+      <App />
       <Analytics />
     </Provider>
   </React.StrictMode>
