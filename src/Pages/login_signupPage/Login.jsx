@@ -4,8 +4,12 @@ import { NavLink, useNavigate } from "react-router-dom";
 import HAblackblock from "../../assets/HAlogosvg/HAblackblock.svg";
 import { Form, Input, Button, message } from "antd";
 import { loginUser } from "../../backendCalls/auth/loginUser";
+import { useDispatch } from "react-redux";
+import { isTokenValid } from "../../utils/auth";
+import { setUser } from "../../redux/actions/authActions";
 
 export default () => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const onFinish = async (values) => {
@@ -13,9 +17,15 @@ export default () => {
     try {
       const res = await loginUser(values);
       if (res.success) {
-        message.success("Welcome back! -> " + res.message);
         localStorage.setItem("token", res.token);
-        navigate("/");
+        const user = isTokenValid();
+        if (user) {
+          dispatch(setUser(user));
+          message.success("Welcome back! -> " + res.message);
+          navigate("/");
+        } else {
+          message.error("Login failed -> " + res.message);
+        }
       } else {
         message.error("Login failed -> " + res.message);
       }

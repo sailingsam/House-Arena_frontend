@@ -1,4 +1,4 @@
-import jwtDecode from "jwt-decode";
+import { jwtDecode } from "jwt-decode";
 
 export const isTokenValid = () => {
   const token = localStorage.getItem("token");
@@ -7,7 +7,9 @@ export const isTokenValid = () => {
   try {
     const decoded = jwtDecode(token);
     const currentTime = Date.now() / 1000;
-    return decoded.exp > currentTime;
+    if ( decoded.exp > currentTime ) {
+      return decoded;
+    }
   } catch (error) {
     return false;
   }

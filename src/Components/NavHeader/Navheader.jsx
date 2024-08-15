@@ -1,11 +1,13 @@
 import { useEffect, useRef, useState } from "react";
 import "./Navheader.css";
-// import horizontalLogo from "../../assets/horizontalLogo.png";
 import HAwhiteblock from "../../assets/HAlogosvg/HAwhiteblock.svg";
 import { NavLink } from "react-router-dom";
 import { Tooltip, message } from "antd";
+import { useDispatch, useSelector } from "react-redux";
 
 function Navheader() {
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.user);
   const [state, setState] = useState(false);
   const navRef = useRef();
 
@@ -14,6 +16,11 @@ function Navheader() {
     { title: "LeaderBoard & Events", path: "/leaderboardandevents" },
     // { title: "House Gates", path: "javascript:void(0)" },
   ];
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    dispatch({ type: "LOGOUT_USER" });
+  };
 
   return (
     <nav ref={navRef} className="bg-black w-full top-0 z-20 sticky">
@@ -119,25 +126,18 @@ function Navheader() {
                   </a>
                 </Tooltip>
               </li>
-              {/* signup */}
-              {/* <li className="mt-4 lg:mt-0">
-                <NavLink
-                  to="/signup"
-                  // onClick={() => {message.info("This feature is not available yet.")}}
-                  className="py-3 px-4 text-center border text-white hover:text-indigo-600 rounded-md block lg:inline lg:border-0"
-                >
-                  <span>Admin Sign up</span>
-                </NavLink>
-              </li> */}
-              {/* github logo */}
               <li className="mt-8 lg:mt-0">
-                <NavLink
+                {user.user ? (
+                  <button onClick={handleLogout} className="py-3 px-4 text-center text-white bg-purple-700 hover:bg-purple-800 rounded-md shadow block lg:inline">
+                    Logout
+                  </button>
+                ) : ( <NavLink
                   to="/login"
                   // onClick={() => {message.info("This feature is not available yet.")}}
                   className="py-3 px-4 text-center text-white bg-purple-700 hover:bg-purple-800 rounded-md shadow block lg:inline"
                 >
                   <span>Admin Log In</span>
-                </NavLink>
+                </NavLink>)}
               </li>
             </ul>
           </div>
