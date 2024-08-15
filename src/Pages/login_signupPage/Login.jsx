@@ -20,7 +20,7 @@ export default () => {
         localStorage.setItem("token", res.token);
         const user = isTokenValid();
         if (user) {
-          dispatch(setUser(user));
+          dispatch(setUser(user.user));
           message.success("Welcome back! -> " + res.message);
           navigate("/");
         } else {

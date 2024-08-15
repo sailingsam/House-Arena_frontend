@@ -11,6 +11,7 @@ import {
   createBrowserRouter,
   RouterProvider,
   createRoutesFromElements,
+  Navigate,
 } from "react-router-dom";
 import { Provider, useDispatch } from "react-redux";
 import store from './redux/store.js';
@@ -18,11 +19,9 @@ import KongPage from "./Pages/HousePages/KongPage/KongPage.jsx";
 import LeoPage from "./Pages/HousePages/LeoPages/LeoPage.jsx";
 import PhoenixPage from "./Pages/HousePages/PhoenixPages/PhoenixPage.jsx";
 import TuskerPage from "./Pages/HousePages/TuskerPage/TuskerPage.jsx";
-import ProtectedRoute from "./Components/ProtectedRoute.js";
 import { Analytics } from "@vercel/analytics/react";
 import { setUser } from "./redux/actions/authActions.js";
 import { isTokenValid } from "./utils/auth.js";
-import { Root } from "postcss";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -37,8 +36,8 @@ const router = createBrowserRouter(
       <Route path="/houseofphoenix" element={<PhoenixPage />}></Route>
       <Route path="/houseoftusker" element={<TuskerPage />}></Route>
 
-      <Route path="/login" element={<LoginPage />}></Route>
-      <Route path="/signup" element={<SignupPage />}></Route>
+      <Route path="/login" element={isTokenValid() ? <Navigate to='/' /> : <LoginPage />}></Route>
+      <Route path="/signup" element={isTokenValid() ? <Navigate to='/' /> : <SignupPage />}></Route>
     </>
   )
 );
@@ -49,7 +48,7 @@ const App = () => {
   useEffect(() => {
     const user = isTokenValid();
     if (user) {
-      dispatch(setUser(user));
+      dispatch(setUser(user.user));
     }
   }, [dispatch]);
 
@@ -58,7 +57,7 @@ const App = () => {
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <Provider store={store}>
+    <Provider store={store} >
       <App />
       <Analytics />
     </Provider>

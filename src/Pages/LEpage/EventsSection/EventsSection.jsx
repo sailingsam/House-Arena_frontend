@@ -8,6 +8,13 @@ import leologo from "../../../assets/logos/transparentbg/14.svg";
 import phoenixlogo from "../../../assets/logos/transparentbg/15.svg";
 import tuskerlogo from "../../../assets/logos/transparentbg/16.svg";
 import { updateHousePoints } from "../../../redux/actions/totalHousePointsActions";
+import { Button, message } from "antd";
+import { Popconfirm } from "antd";
+import {
+  addEvent,
+  updateEvent,
+  deleteEvent,
+} from "../../../backendCalls/event/EventCrud";
 
 export default () => {
   const dispatch = useDispatch();
@@ -21,6 +28,8 @@ export default () => {
   const filteredEvents = reversedEvents.filter((e) =>
     e.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
+
+  const user = useSelector((state) => state.user.user);
 
   useEffect(() => {
     const housePoints = {
@@ -43,6 +52,16 @@ export default () => {
   useEffect(() => {
     dispatch(fetchEvents());
   }, [dispatch]);
+
+  const DeleteEvent = async (id) => {
+    const res = await deleteEvent(id);
+    if (res.success) {
+      message.success("Event deleted successfully");
+      dispatch(fetchEvents());
+    } else {
+      message.error("Failed to delete event");
+    }
+  };
 
   return (
     <div className="max-w-screen-xl mx-auto px-4 md:px-8">
@@ -72,7 +91,7 @@ export default () => {
         <table className="w-full table-auto text-sm lg:text-xl text-left">
           <thead className="bg-gray-50  font-medium border-b">
             <tr>
-              <th className="py-3 px-6">Event</th>
+              <th className="py-3 px-6 font-bold text-lg">Event</th>
               <th className="py-3 px-6">Date</th>
               <th className="py-1 lg:px-5 text-center bg-blue-500">
                 <img src={konglogo} className="w-14 h-14 m-auto" />
@@ -86,6 +105,15 @@ export default () => {
               <th className="py-1 lg:px-5 text-center bg-green-500">
                 <img src={tuskerlogo} className="w-14 h-14 m-auto" />
               </th>
+              {user ? (
+                <th className="text-center">
+                  <Button type="link" className="font-semibold text-sm">
+                    add new event +
+                  </Button>
+                </th>
+              ) : (
+                <></>
+              )}
             </tr>
           </thead>
           <tbody className="text-white font-semibold divide-y">
@@ -119,7 +147,7 @@ export default () => {
                       const month = String(date.getMonth() + 1).padStart(
                         2,
                         "0"
-                      ); // Months are zero-indexed
+                      );
                       const year = date.getFullYear();
                       return `${day}-${month}-${year}`;
                     })()}
@@ -136,6 +164,28 @@ export default () => {
                   <td className="px-6 py-4 whitespace-nowrap text-center border-2 border-green-500">
                     {item.housePoints.tusker}
                   </td>
+                  {user ? (
+                    <td className="text-center gap-2">
+                      <Button
+                        type="primary"
+                        className="bg-purple-700 font-semibold text-sm"
+                      >
+                        Edit
+                      </Button>
+                      <Popconfirm
+                        title="Are you sure to delete this event?"
+                        onConfirm={() => DeleteEvent(item._id)}
+                        okText="Yes"
+                        cancelText="No"
+                      >
+                        <Button type="dashed" className="ml-1">
+                          Delete
+                        </Button>
+                      </Popconfirm>
+                    </td>
+                  ) : (
+                    <></>
+                  )}
                 </tr>
               ))
             )}
