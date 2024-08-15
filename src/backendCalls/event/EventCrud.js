@@ -1,6 +1,7 @@
 import axios from "axios";
 
 export const addEvent = async (event) => {
+  console.log(`event details >` + event)
   try {
     const res = await axios.post(
       `${import.meta.env.VITE_BASE_URL_BACKEND}/api/events`,
@@ -14,9 +15,10 @@ export const addEvent = async (event) => {
 };
 
 export const updateEvent = async (event) => {
+  console.log(`ye hai recieved event for update ${event._id}`);
   try {
     const res = await axios.put(
-      `${import.meta.env.VITE_BASE_URL_BACKEND}/api/events/${event.id}`,
+      `${import.meta.env.VITE_BASE_URL_BACKEND}/api/events/${event._id}`,
       event
     )
     return res.data;

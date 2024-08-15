@@ -8,13 +8,21 @@ import leologo from "../../../assets/logos/transparentbg/14.svg";
 import phoenixlogo from "../../../assets/logos/transparentbg/15.svg";
 import tuskerlogo from "../../../assets/logos/transparentbg/16.svg";
 import { updateHousePoints } from "../../../redux/actions/totalHousePointsActions";
-import { Button, message } from "antd";
-import { Popconfirm } from "antd";
 import {
+  deleteEvent,
   addEvent,
   updateEvent,
-  deleteEvent,
 } from "../../../backendCalls/event/EventCrud";
+import {
+  Button,
+  message,
+  Popconfirm,
+  Modal,
+  Form,
+  Input,
+  DatePicker,
+} from "antd";
+import moment from "moment";
 
 export default () => {
   const dispatch = useDispatch();
@@ -23,6 +31,9 @@ export default () => {
   const error = useSelector((state) => state.events.error);
 
   const [searchTerm, setSearchTerm] = useState("");
+  const [isModalVisible, setIsModalVisible] = useState(false);
+  const [currentEvent, setCurrentEvent] = useState(null);
+  const [form] = Form.useForm();
 
   const reversedEvents = [...events].reverse();
   const filteredEvents = reversedEvents.filter((e) =>
@@ -60,6 +71,60 @@ export default () => {
       dispatch(fetchEvents());
     } else {
       message.error("Failed to delete event");
+    }
+  };
+
+  const handleAddEvent = () => {
+    setCurrentEvent(null);
+    form.resetFields();
+    setIsModalVisible(true);
+  };
+
+  const handleEditEvent = (event) => {
+    setCurrentEvent(event);
+    form.setFieldsValue({
+      name: event.name,
+      date: moment(event.date),
+      housePoints: event.housePoints,
+    });
+    setIsModalVisible(true);
+  };
+
+  const handleSubmit = async (values) => {
+    try {
+      const eventData = {
+        name: values.name,
+        date: values.date.format("YYYY-MM-DD"),
+        housePoints: {
+          kong: values.housePoints.kong || 0,
+          leo: values.housePoints.leo || 0,
+          phoenix: values.housePoints.phoenix || 0,
+          tusker: values.housePoints.tusker || 0,
+        },
+        description: values.description, // Include the description field
+      };
+
+      let res;
+      if (currentEvent) {
+        res = await updateEvent({ ...eventData, _id: currentEvent._id });
+      } else {
+        res = await addEvent(eventData);
+      }
+
+      if (res.success) {
+        message.success(
+          `Event ${currentEvent ? "updated" : "added"} successfully`
+        );
+        setIsModalVisible(false);
+        dispatch(fetchEvents());
+      } else {
+        message.error(
+          `Failed to ${currentEvent ? "update" : "add"} event: ${res.message}`
+        );
+      }
+    } catch (error) {
+      console.error("Error submitting event:", error);
+      message.error("An error occurred while submitting the event");
     }
   };
 
@@ -107,7 +172,11 @@ export default () => {
               </th>
               {user ? (
                 <th className="text-center">
-                  <Button type="link" className="font-semibold text-sm">
+                  <Button
+                    type="link"
+                    className="font-semibold text-sm"
+                    onClick={handleAddEvent}
+                  >
                     add new event +
                   </Button>
                 </th>
@@ -169,6 +238,7 @@ export default () => {
                       <Button
                         type="primary"
                         className="bg-purple-700 font-semibold text-sm"
+                        onClick={() => handleEditEvent(item)}
                       >
                         Edit
                       </Button>
@@ -192,6 +262,102 @@ export default () => {
           </tbody>
         </table>
       </div>
+      <Modal
+        title={currentEvent ? "Edit Event" : "Add New Event"}
+        open={isModalVisible}
+        onCancel={() => setIsModalVisible(false)}
+        footer={null}
+      >
+        <Form
+          form={form}
+          onFinish={handleSubmit}
+          layout="vertical"
+          initialValues={{ housePoints: {} }}
+        >
+          <Form.Item
+            name="name"
+            label="Event Name"
+            rules={[
+              { required: true, message: "Please input the event name!" },
+            ]}
+          >
+            <Input />
+          </Form.Item>
+          <Form.Item
+            name="date"
+            label="Event Date"
+            rules={[
+              { required: true, message: "Please select the event date!" },
+            ]}
+          >
+            <DatePicker style={{ width: "100%" }} />
+          </Form.Item>
+          <Form.Item
+            name="description"
+            label="Event Description"
+            rules={[
+              {
+                message: "Please input the event description!",
+              },
+            ]}
+          >
+            <Input.TextArea rows={4} />
+          </Form.Item>
+          <Form.Item label="House Points" name='housePoints' rules={[{ required: true, message: "Required" }]}>
+            <Input.Group compact>
+              <Form.Item
+                name={["kong"]}
+                noStyle
+                rules={[{ required: true, message: "Required" }]}
+              >
+                <Input
+                  style={{ width: "25%" }}
+                  placeholder="Kong"
+                  type="number"
+                />
+              </Form.Item>
+              <Form.Item
+                name={["leo"]}
+                noStyle
+                rules={[{ required: true, message: "Required" }]}
+              >
+                <Input
+                  style={{ width: "25%" }}
+                  placeholder="Leo"
+                  type="number"
+                />
+              </Form.Item>
+              <Form.Item
+                name={["phoenix"]}
+                noStyle
+                rules={[{ required: true, message: "Required" }]}
+              >
+                <Input
+                  style={{ width: "25%" }}
+                  placeholder="Phoenix"
+                  type="number"
+                />
+              </Form.Item>
+              <Form.Item
+                name={["tusker"]}
+                noStyle
+                rules={[{ required: true, message: "Required" }]}
+              >
+                <Input
+                  style={{ width: "25%" }}
+                  placeholder="Tusker"
+                  type="number"
+                />
+              </Form.Item>
+            </Input.Group>
+          </Form.Item>
+          <Form.Item>
+            <Button type="primary" htmlType="submit">
+              {currentEvent ? "Update" : "Add"} Event
+            </Button>
+          </Form.Item>
+        </Form>
+      </Modal>
     </div>
   );
 };
