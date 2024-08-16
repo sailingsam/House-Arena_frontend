@@ -20,6 +20,7 @@ function Navheader() {
   const handleLogout = () => {
     localStorage.removeItem("token");
     dispatch({ type: "LOGOUT_USER" });
+    message.success("Logged out successfully.");
   };
 
   return (
