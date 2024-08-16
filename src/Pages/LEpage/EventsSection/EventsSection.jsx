@@ -84,7 +84,7 @@ export default () => {
     setCurrentEvent(event);
     form.setFieldsValue({
       name: event.name,
-      date: moment(event.date),
+      date: event.date ? moment(event.date) : null,
       description: event.description,
       housePoints: {
         kong: event.housePoints.kong,
@@ -100,7 +100,7 @@ export default () => {
     try {
       const eventData = {
         name: values.name,
-        date: values.date.format("YYYY-MM-DD"),
+        date: values.date?.format("YYYY-MM-DD"),
         housePoints: {
           kong: parseInt(values.housePoints.kong) || 0,
           leo: parseInt(values.housePoints.leo) || 0,
@@ -292,9 +292,6 @@ export default () => {
           <Form.Item
             name="date"
             label="Event Date"
-            rules={[
-              { required: true, message: "Please select the event date!" },
-            ]}
           >
             <DatePicker style={{ width: "100%" }} />
           </Form.Item>
@@ -305,30 +302,30 @@ export default () => {
           >
             <Input.TextArea rows={4} />
           </Form.Item>
-          <Form.Item label="House Points">
+          <Form.Item label="House Points" required>
             <Input.Group compact>
-              <Form.Item name={["housePoints", "kong"]} noStyle>
+              <Form.Item name={["housePoints", "kong"]} rules={[{ required: true }]} noStyle>
                 <Input
                   style={{ width: "25%" }}
                   placeholder="Kong"
                   type="number"
                 />
               </Form.Item>
-              <Form.Item name={["housePoints", "leo"]} noStyle>
+              <Form.Item name={["housePoints", "leo"]} rules={[{ required: true }]} noStyle>
                 <Input
                   style={{ width: "25%" }}
                   placeholder="Leo"
                   type="number"
                 />
               </Form.Item>
-              <Form.Item name={["housePoints", "phoenix"]} noStyle>
+              <Form.Item name={["housePoints", "phoenix"]} rules={[{ required: true }]} noStyle>
                 <Input
                   style={{ width: "25%" }}
                   placeholder="Phoenix"
                   type="number"
                 />
               </Form.Item>
-              <Form.Item name={["housePoints", "tusker"]} noStyle>
+              <Form.Item name={["housePoints", "tusker"]} rules={[{ required: true }]} noStyle>
                 <Input
                   style={{ width: "25%" }}
                   placeholder="Tusker"
