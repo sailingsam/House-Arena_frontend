@@ -21,6 +21,7 @@ import {
   Form,
   Input,
   DatePicker,
+  Space
 } from "antd";
 import moment from "moment";
 
@@ -303,7 +304,7 @@ export default () => {
             <Input.TextArea rows={4} />
           </Form.Item>
           <Form.Item label="House Points" required>
-            <Input.Group compact>
+            <Space.Compact compact>
               <Form.Item name={["housePoints", "kong"]} rules={[{ required: true }]} noStyle>
                 <Input
                   style={{ width: "25%" }}
@@ -332,7 +333,7 @@ export default () => {
                   type="number"
                 />
               </Form.Item>
-            </Input.Group>
+            </Space.Compact>
           </Form.Item>
           <Form.Item>
             <Button type="primary" htmlType="submit">
