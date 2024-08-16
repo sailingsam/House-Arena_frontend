@@ -85,7 +85,13 @@ export default () => {
     form.setFieldsValue({
       name: event.name,
       date: moment(event.date),
-      housePoints: event.housePoints,
+      description: event.description,
+      housePoints: {
+        kong: event.housePoints.kong,
+        leo: event.housePoints.leo,
+        phoenix: event.housePoints.phoenix,
+        tusker: event.housePoints.tusker,
+      },
     });
     setIsModalVisible(true);
   };
@@ -96,12 +102,12 @@ export default () => {
         name: values.name,
         date: values.date.format("YYYY-MM-DD"),
         housePoints: {
-          kong: values.housePoints.kong || 0,
-          leo: values.housePoints.leo || 0,
-          phoenix: values.housePoints.phoenix || 0,
-          tusker: values.housePoints.tusker || 0,
+          kong: parseInt(values.housePoints.kong) || 0,
+          leo: parseInt(values.housePoints.leo) || 0,
+          phoenix: parseInt(values.housePoints.phoenix) || 0,
+          tusker: parseInt(values.housePoints.tusker) || 0,
         },
-        description: values.description, // Include the description field
+        description: values.description,
       };
 
       let res;
@@ -295,54 +301,34 @@ export default () => {
           <Form.Item
             name="description"
             label="Event Description"
-            rules={[
-              {
-                message: "Please input the event description!",
-              },
-            ]}
+            rules={[{ message: "Please input the event description!" }]}
           >
             <Input.TextArea rows={4} />
           </Form.Item>
-          <Form.Item label="House Points" name='housePoints' rules={[{ required: true, message: "Required" }]}>
+          <Form.Item label="House Points">
             <Input.Group compact>
-              <Form.Item
-                name={["kong"]}
-                noStyle
-                rules={[{ required: true, message: "Required" }]}
-              >
+              <Form.Item name={["housePoints", "kong"]} noStyle>
                 <Input
                   style={{ width: "25%" }}
                   placeholder="Kong"
                   type="number"
                 />
               </Form.Item>
-              <Form.Item
-                name={["leo"]}
-                noStyle
-                rules={[{ required: true, message: "Required" }]}
-              >
+              <Form.Item name={["housePoints", "leo"]} noStyle>
                 <Input
                   style={{ width: "25%" }}
                   placeholder="Leo"
                   type="number"
                 />
               </Form.Item>
-              <Form.Item
-                name={["phoenix"]}
-                noStyle
-                rules={[{ required: true, message: "Required" }]}
-              >
+              <Form.Item name={["housePoints", "phoenix"]} noStyle>
                 <Input
                   style={{ width: "25%" }}
                   placeholder="Phoenix"
                   type="number"
                 />
               </Form.Item>
-              <Form.Item
-                name={["tusker"]}
-                noStyle
-                rules={[{ required: true, message: "Required" }]}
-              >
+              <Form.Item name={["housePoints", "tusker"]} noStyle>
                 <Input
                   style={{ width: "25%" }}
                   placeholder="Tusker"

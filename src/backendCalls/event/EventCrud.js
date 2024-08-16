@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const addEvent = async (event) => {
-  console.log(`event details >` + event)
+  console.log(`event details >` + event);
   try {
     const res = await axios.post(
       `${import.meta.env.VITE_BASE_URL_BACKEND}/api/events`,
@@ -20,7 +20,7 @@ export const updateEvent = async (event) => {
     const res = await axios.put(
       `${import.meta.env.VITE_BASE_URL_BACKEND}/api/events/${event._id}`,
       event
-    )
+    );
     return res.data;
   } catch (error) {
     console.log("error in update logic", error);
@@ -39,4 +39,3 @@ export const deleteEvent = async (id) => {
     return error.response.data;
   }
 };
-
