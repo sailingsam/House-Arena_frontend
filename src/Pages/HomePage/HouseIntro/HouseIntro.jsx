@@ -7,7 +7,7 @@ import { NavLink } from "react-router-dom";
 export default () => {
   const houseData = [
     {
-      name: "House of Tusker",
+      name: "House of\nTusker",
       attribute: "Respect",
       logo: tuskerlogo,
       themecss: {
@@ -15,10 +15,10 @@ export default () => {
         textGradient: "from-green-500 to-green-500",
         textColor: "text-gray-600 dark:text-green-500",
       },
-      pagelink:"/houseoftusker"
+      pagelink: "/houseoftusker"
     },
     {
-      name: "House of Leo",
+      name: "House of\nLeo",
       attribute: "Integrity",
       logo: leologo,
       themecss: {
@@ -26,10 +26,10 @@ export default () => {
         textGradient: "from-yellow-500 to-yellow-500",
         textColor: "text-gray-600 dark:text-yellow-500",
       },
-      pagelink:"/houseofleo"
+      pagelink: "/houseofleo"
     },
     {
-      name: "House of Kong",
+      name: "House of\nKong",
       attribute: "Curiosity",
       logo: konglogo,
       themecss: {
@@ -37,10 +37,10 @@ export default () => {
         textGradient: "from-blue-500 to-blue-500",
         textColor: "text-gray-600 dark:text-blue-500",
       },
-      pagelink:"/houseofkong"
+      pagelink: "/houseofkong"
     },
     {
-      name: "House of Phoenix",
+      name: "House of\nPhoenix",
       attribute: "Excellence",
       logo: phoenixlogo,
       themecss: {
@@ -48,7 +48,7 @@ export default () => {
         textGradient: "from-red-500 to-red-500",
         textColor: "text-gray-600 dark:text-red-500",
       },
-      pagelink:"/houseofphoenix"
+      pagelink: "/houseofphoenix"
     },
   ];
 
@@ -75,7 +75,7 @@ export default () => {
             {houseData.map((house, index) => (
               <li
                 key={index}
-                className="flex  justify-center group cursor-pointer"
+                className="flex justify-center group cursor-pointer"
               >
                 <NavLink to={`${house.pagelink}`}>
                   <div className="flex flex-col justify-center items-center gap-5 group mx-2 cursor-pointer w-[70px] sm:w-20 md:w-32 lg:w-44">
@@ -98,7 +98,12 @@ export default () => {
                         <p
                           className={`font-semibold text-md lg:text-xl relative after:scale-x-0 after:h-0.5 after:bottom-0 after:left-0 after:absolute after:origin-bottom-left after:transform after:ease-in-out after:duration-500 cursor-pointer w-full after:w-full group-hover:after:scale-x-100 group-hover:after:origin-bottom-left after:${house.themecss.textGradient} text-gray-600 dark:${house.themecss.textColor}`}
                         >
-                          {house.name}
+                          {house.name.split('\n').map((line, index) => (
+                            <React.Fragment key={index}>
+                              {line}
+                              <br />
+                            </React.Fragment>
+                          ))}
                         </p>
                         <p className="text-sm text-gray-400 font-semibold">
                           {house.attribute}
