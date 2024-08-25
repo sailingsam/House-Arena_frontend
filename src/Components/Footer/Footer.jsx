@@ -17,6 +17,10 @@ function Footer() {
           href: "https://github.com/sailingsam/House-Arena_frontend",
           name: "Github",
         },
+        {
+          href: "https://housearenaf.vercel.app/",
+          name: "House Arena Version 1",
+        },
       ],
     },
     {
