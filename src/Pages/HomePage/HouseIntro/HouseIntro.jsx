@@ -7,7 +7,7 @@ import { NavLink } from "react-router-dom";
 export default () => {
   const houseData = [
     {
-      name: "House of Tusker",
+      name: "Tusker",
       attribute: "Respect",
       logo: tuskerlogo,
       themecss: {
@@ -18,7 +18,7 @@ export default () => {
       pagelink:"/houseoftusker"
     },
     {
-      name: "House of Leo",
+      name: "Leo",
       attribute: "Integrity",
       logo: leologo,
       themecss: {
@@ -29,7 +29,7 @@ export default () => {
       pagelink:"/houseofleo"
     },
     {
-      name: "House of Kong",
+      name: "Kong",
       attribute: "Curiosity",
       logo: konglogo,
       themecss: {
@@ -40,7 +40,7 @@ export default () => {
       pagelink:"/houseofkong"
     },
     {
-      name: "House of Phoenix",
+      name: "Phoenix",
       attribute: "Excellence",
       logo: phoenixlogo,
       themecss: {
