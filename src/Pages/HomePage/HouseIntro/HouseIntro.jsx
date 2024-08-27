@@ -56,7 +56,7 @@ export default () => {
     <section className="relative sm:py-20 pb-20">
       <div className="relative z-10 max-w-screen-xl mx-auto px-4 text-gray-300 justify-between gap-24 md:px-8">
         <div className="max-w-screen-xl text-center mb-12">
-          <h3 className="text-white font-bold text-4xl font-semibold sm:text-4xl xl:text-5xl">
+          <h3 className="text-white text-4xl font-semibold sm:text-4xl xl:text-5xl">
             Unity through Diversity:
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#fd5b5b] to-[#15ff00]">
               {" "}
