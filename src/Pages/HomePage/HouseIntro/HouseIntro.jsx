@@ -93,12 +93,12 @@ export default () => {
                         alt={`${house.name} logo`}
                       />
                     </div>
-                    <div className="flex flex-row place-items-center place-content-between">
+                    <div className="flex flex-row place-items-center place-content-between w-full">
                       <div className="flex flex-col justify-between gap-1">
                         <p
                           className={`font-semibold text-md lg:text-xl relative after:scale-x-0 after:h-0.5 after:bottom-0 after:left-0 after:absolute after:origin-bottom-left after:transform after:ease-in-out after:duration-500 cursor-pointer w-full after:w-full group-hover:after:scale-x-100 group-hover:after:origin-bottom-left after:${house.themecss.textGradient} text-gray-600 dark:${house.themecss.textColor}`}
                         >
-                          {house.name}
+                          House of <br />{house.name}
                         </p>
                         <p className="text-sm text-gray-400 font-semibold">
                           {house.attribute}
