@@ -214,7 +214,6 @@ export default () => {
       <Form.Item
         name="password"
         label="Password"
-        placeholder="d"
         rules={[
           {
             required: true,
@@ -223,7 +222,7 @@ export default () => {
         ]}
         hasFeedback
       >
-        <Input.Password />
+        <Input.Password placeholder="******"  />
       </Form.Item>
 
       <Form.Item
@@ -256,10 +255,6 @@ export default () => {
         label="Name"
         tooltip="Your real name please"
         rules={[
-          {
-            type: "string",
-            message: "not valid name",
-          },
           {
             required: true,
             message: "Please input your name!",

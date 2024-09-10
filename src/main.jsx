@@ -22,6 +22,7 @@ import TuskerPage from "./Pages/HousePages/TuskerPage/TuskerPage.jsx";
 import { Analytics } from "@vercel/analytics/react";
 import { setUser } from "./redux/actions/authActions.js";
 import { isTokenValid } from "./utils/auth.js";
+import ForgotPassword from "./Pages/login_signupPage/ForgotPassword.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -38,6 +39,7 @@ const router = createBrowserRouter(
 
       <Route path="/login" element={isTokenValid() ? <Navigate to='/' /> : <LoginPage />}></Route>
       <Route path="/signup" element={isTokenValid() ? <Navigate to='/' /> : <SignupPage />}></Route>
+      <Route path="/forgotpassword" element={<ForgotPassword />}></Route>  
     </>
   )
 );

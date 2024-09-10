@@ -130,6 +130,14 @@ export default () => {
               >
                 Let's Dive In
               </Button>
+              <div className="mt-2">
+                <NavLink
+                  to="/forgotpassword"
+                  className="text-sm text-gray-400 font-medium"
+                >
+                  Forgot Password ?
+                </NavLink>
+              </div>
             </div>
           </Form>
         </div>
