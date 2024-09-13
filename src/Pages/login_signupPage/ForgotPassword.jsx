@@ -8,10 +8,43 @@ import { useDispatch } from "react-redux";
 import { isTokenValid } from "../../utils/auth";
 import { setUser } from "../../redux/actions/authActions";
 import {
-  ForgotPassword,
+  ResetPassword,
   SendOtp,
   VerifyOtp,
 } from "../../backendCalls/auth/ForgotPassword";
+import Loader from "../../Components/Loader";
+
+const formItemLayout = {
+  labelCol: {
+    xs: {
+      span: 24,
+    },
+    sm: {
+      span: 8,
+    },
+  },
+  wrapperCol: {
+    xs: {
+      span: 24,
+    },
+    sm: {
+      span: 16,
+    },
+  },
+};
+
+const tailFormItemLayout = {
+  wrapperCol: {
+    xs: {
+      span: 24,
+      offset: 0,
+    },
+    sm: {
+      span: 16,
+      offset: 8,
+    },
+  },
+};
 
 export default () => {
   const dispatch = useDispatch();
@@ -20,11 +53,14 @@ export default () => {
   const [isStudent, setIsStudent] = useState(false);
   const [otpSent, setOtpSent] = useState(false);
   const [otpVerified, setOtpVerified] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const handleSendOtp = async () => {
     const email = form.getFieldValue("email");
     console.log(`email ${email}`);
+    setLoading(true);
     const response = await SendOtp(email);
+    setLoading(false);
     if (response.success) {
       message.success("OTP sent successfully");
       setOtpSent(true);
@@ -54,31 +90,25 @@ export default () => {
     }
   };
 
+
   const onFinish = async (values) => {
     console.log("Received values of form: ", values);
-    try {
-      const res = await loginUser(values);
-      if (res.success) {
-        localStorage.setItem("token", res.token);
-        const user = isTokenValid();
-        if (user) {
-          dispatch(setUser(user.user));
-          message.success("Welcome back! -> " + res.message);
-          navigate("/");
-        } else {
-          message.error("proccess failed -> " + res.message);
-        }
-      } else {
-        message.error("proccess failed -> " + res.message);
-      }
-    } catch (error) {
-      console.log(error);
-      message.error("Error -> " + error.message);
+    const { email, password } = values;
+    console.log("Updating password for:", email);
+    setLoading(true);
+    const response = await ResetPassword({ email, password });
+    setLoading(false);
+    console.log("Update password response:", response);
+    if (response.success) {
+      message.success("Password updated successfully");
+    } else {
+      message.error("Failed to update password");
     }
   };
 
   return (
     <main className="w-full flex">
+      {loading && <Loader LoaderData="Sending OTP..." />}
       <div className="relative flex-1 hidden items-center justify-center h-screen bg-gray-900 lg:flex">
         <div className="relative z-10 w-full max-w-md">
           <img src={HAwhiteblock} width={450} />
@@ -139,7 +169,16 @@ export default () => {
             </p>
           </div>
 
-          <Form onFinish={onFinish} form={form} className="space-y-5">
+          <Form
+            {...formItemLayout}
+            form={form}
+            name="restPass"
+            onFinish={onFinish}
+            style={{
+              maxWidth: 600,
+            }}
+            scrollToFirstError
+          >
             <Form.Item
               name="email"
               label="E-mail"
@@ -159,9 +198,9 @@ export default () => {
                       value.endsWith("@sst.scaler.com") ||
                       value.endsWith("@scaler.com")
                     ) {
-                      return;
+                      return Promise.resolve();
                     }
-                    throw new Error(
+                    return Promise.reject(
                       "Please use only official scaler gmail id (@sst.scaler.com or @scaler.com)"
                     );
                   },
@@ -186,7 +225,7 @@ export default () => {
             >
               <Input.Password placeholder="Enter OTP" />
             </Form.Item>
-            <div className="flex-col justify-center text-center">
+            <Form.Item {...tailFormItemLayout}>
               <Button
                 type="primary"
                 onClick={handleSendOtp}
@@ -194,7 +233,9 @@ export default () => {
               >
                 Send OTP
               </Button>
-              {otpSent && (
+            </Form.Item>
+            {otpSent && (
+              <Form.Item {...tailFormItemLayout}>
                 <Button
                   type="primary"
                   onClick={handleVerifyOtp}
@@ -202,10 +243,10 @@ export default () => {
                 >
                   Verify OTP
                 </Button>
-              )}
-            </div>
+              </Form.Item>
+            )}
             <Form.Item
-              name="new password"
+              name="password"
               label="Password"
               rules={[
                 {
@@ -215,13 +256,13 @@ export default () => {
               ]}
               hasFeedback
             >
-              <Input.Password placeholder="******" disabled={!otpVerified} />
+              <Input.Password placeholder="******" />
             </Form.Item>
 
             <Form.Item
-              name="confirm pass"
+              name="confirmpass"
               label="Confirm Password"
-              dependencies={["password"]}
+              // dependencies={["password"]}
               hasFeedback
               rules={[
                 {
@@ -230,11 +271,13 @@ export default () => {
                 },
                 ({ getFieldValue }) => ({
                   validator(_, value) {
-                    if (!value || getFieldValue("new password") === value) {
+                    if (!value || getFieldValue("password") === value) {
                       return Promise.resolve();
                     }
                     return Promise.reject(
-                      new Error("The new password that you entered do not match!")
+                      new Error(
+                        "The new password that you entered do not match!"
+                      )
                     );
                   },
                 }),
@@ -243,15 +286,15 @@ export default () => {
               <Input.Password placeholder="******" disabled={!otpVerified} />
             </Form.Item>
 
-            <div className="flex-col justify-center text-center">
+            <Form.Item {...tailFormItemLayout}>
               <Button
                 type="primary"
                 htmlType="submit"
-                className="max-w-fit px-4 py-2 text-white font-medium bg-indigo-600 hover:bg-indigo-500 active:bg-indigo-600 rounded-full duration-150"
+                className="max-w-fit px-4 py-2 text-white font-medium bg-indigo-600 hover:bg-indigo-500 active:bg-indigo-600 rounded-full"
               >
                 Submit
               </Button>
-            </div>
+            </Form.Item>
           </Form>
         </div>
       </div>
