@@ -239,7 +239,7 @@ export default () => {
                 <Button
                   type="primary"
                   onClick={handleVerifyOtp}
-                  className="max-w-fit px-4 py-2 mx-2 text-white font-medium bg-indigo-600 hover:bg-indigo-500 active:bg-indigo-600 duration-150"
+                  className="max-w-fit px-4 py-2 text-white font-medium bg-indigo-600 hover:bg-indigo-500 active:bg-indigo-600 duration-150"
                 >
                   Verify OTP
                 </Button>
