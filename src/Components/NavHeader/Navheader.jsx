@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import "./Navheader.css";
 import HAwhiteblock from "../../assets/HAlogosvg/HAwhiteblock.svg";
 import { NavLink } from "react-router-dom";

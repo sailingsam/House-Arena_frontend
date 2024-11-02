@@ -1,7 +1,7 @@
 import LeaderboardSection from "./LeaderBoardSection/LeaderboardSection";
 import EventsSection from "./EventsSection/EventsSection";
 
-export default () => {
+const LeaderboardAndEvents = () => {
   
 
   return (
@@ -11,3 +11,5 @@ export default () => {
     </div>
   );
 };
+
+export default LeaderboardAndEvents;
