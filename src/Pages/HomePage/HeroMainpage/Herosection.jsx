@@ -47,7 +47,7 @@ const HeroSection = () => {
         </div>
       </div>
       <div className="flex-1 text-center mt-7 md:mt-0 lg:mt-0 lg:ml-3">
-        <img src={allhouse} className="w-3/4 mx-auto sm:w-80" alt="All houses" />
+        <img src={allhouse} className="w-3/4 mx-auto sm:w-80" alt="All houses" fetchPriority="high"/>
       </div>
     </section>
   );
