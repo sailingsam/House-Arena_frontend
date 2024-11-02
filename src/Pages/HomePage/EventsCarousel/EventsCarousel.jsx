@@ -1,9 +1,8 @@
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import React, { useState, useRef } from "react";
 import Slider from "react-slick";
 
-export default () => {
+const EventsCarousel = () => {
 
   const settings = {
     dots: false,
@@ -47,50 +46,52 @@ const data = {
       description: "Description of event 1",
       date: "2021-08-01",
       image:
-        "https://cloud.appwrite.io/v1/storage/buckets/66702b7e001e32c971ed/files/66afdda4003a4405feb1/view?project=house-arena-react-vite&mode=admin",
+        "https://cloud.appwrite.io/v1/storage/buckets/66702b7e001e32c971ed/files/66afdda4003a4405feb1/view?project=house-arena-react-vite",
     },
     {
       title: "Event 2",
       description: "Description of event 2",
       date: "2021-08-02",
       image:
-        "https://cloud.appwrite.io/v1/storage/buckets/66702b7e001e32c971ed/files/66afdd970034de206a79/view?project=house-arena-react-vite&mode=admin",
+        "https://cloud.appwrite.io/v1/storage/buckets/66702b7e001e32c971ed/files/66afdd970034de206a79/view?project=house-arena-react-vite",
     },
     {
       title: "Event 3",
       description: "Description of event 3",
       date: "2021-08-03",
       image:
-        "https://cloud.appwrite.io/v1/storage/buckets/66702b7e001e32c971ed/files/66afdd530012310b3502/view?project=house-arena-react-vite&mode=admin",
+        "https://cloud.appwrite.io/v1/storage/buckets/66702b7e001e32c971ed/files/66afdd530012310b3502/view?project=house-arena-react-vite",
     },
     {
       title: "Event 4",
       description: "Description of event 1",
       date: "2021-08-01",
       image:
-        "https://cloud.appwrite.io/v1/storage/buckets/66702b7e001e32c971ed/files/66afdd3c000d7190d838/view?project=house-arena-react-vite&mode=admin",
+        "https://cloud.appwrite.io/v1/storage/buckets/66702b7e001e32c971ed/files/66afdd3c000d7190d838/view?project=house-arena-react-vite",
     },
     {
       title: "Event 5",
       description: "Description of event 2",
       date: "2021-08-02",
       image:
-        "https://cloud.appwrite.io/v1/storage/buckets/66702b7e001e32c971ed/files/66afdd2d0002e8038023/view?project=house-arena-react-vite&mode=admin",
+        "https://cloud.appwrite.io/v1/storage/buckets/66702b7e001e32c971ed/files/66afdd2d0002e8038023/view?project=house-arena-react-vite",
     },
     {
       title: "Event 6",
       description: "Description of event 3",
       date: "2021-08-03",
       image:
-        "https://cloud.appwrite.io/v1/storage/buckets/66702b7e001e32c971ed/files/66afdd1b00141ec3e041/view?project=house-arena-react-vite&mode=admin",
+        "https://cloud.appwrite.io/v1/storage/buckets/66702b7e001e32c971ed/files/66afdd1b00141ec3e041/view?project=house-arena-react-vite",
     },
     {
       image:
-        "https://cloud.appwrite.io/v1/storage/buckets/66702b7e001e32c971ed/files/66afdd090019085fe04e/view?project=house-arena-react-vite&mode=admin",
+        "https://cloud.appwrite.io/v1/storage/buckets/66702b7e001e32c971ed/files/66afdd090019085fe04e/view?project=house-arena-react-vite",
     },
     {
       image:
-        "https://cloud.appwrite.io/v1/storage/buckets/66702b7e001e32c971ed/files/66afdcea000d02586164/view?project=house-arena-react-vite&mode=admin",
+        "https://cloud.appwrite.io/v1/storage/buckets/66702b7e001e32c971ed/files/66afdcea000d02586164/view?project=house-arena-react-vite",
     },
   ],
 };
+
+export default EventsCarousel;

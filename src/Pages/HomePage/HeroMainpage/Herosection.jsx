@@ -1,7 +1,14 @@
-import allhouse from "../../../assets/logos/aigenerated/p.png";
+import { useLayoutEffect } from "react";
+import allhouse from "../../../assets/logos/aigenerated/p.webp";
 import { NavLink } from "react-router-dom";
 
-export default () => {
+const HeroSection = () => {
+  // This is to preload the image
+  useLayoutEffect(() => {
+    const img = new Image();
+    img.src = allhouse;
+  }, []);
+
   return (
     <section className="mt-10 md:mt-14 lg:mt-20 mx-auto max-w-screen-xl pb-12 px-4 items-center md:flex md:items-center md:px-8">
       <div className="space-y-4 flex-1 sm:text-center lg:text-left">
@@ -16,7 +23,7 @@ export default () => {
           At <b className="text-lg text-white">Scaler School of Technology</b>{" "}
           we have 4 houses: House of Kong, Leo, Phoenix & Tusker. <br /> House
           Arena is your one-stop platform for tracking house points, viewing
-          past events, and fostering a competitive spirit within your individul
+          past events, and fostering a competitive spirit within your individual
           houses.
         </p>
         <div className="sm:pt-10 text-center items-center justify-center space-y-3 sm:space-x-6 sm:space-y-0 sm:flex lg:justify-start">
@@ -32,16 +39,18 @@ export default () => {
               </div>
             </button>
           </NavLink>
-          <a href={"https://github.com/sailingsam/House-Arena_frontend"} target="_blank">
-            <button class="text-zinc-400 hover:text-purple-600 backdrop-blur-lg bg-gradient-to-tr from-transparent via-[rgba(121,121,121,0.16)] to-transparent rounded-md py-2 px-6 shadow hover:shadow-purple-600 duration-700">
+          <a href={"https://github.com/sailingsam/House-Arena_frontend"} target="_blank" rel="noopener noreferrer">
+            <button className="text-zinc-400 hover:text-purple-600 backdrop-blur-lg bg-gradient-to-tr from-transparent via-[rgba(121,121,121,0.16)] to-transparent rounded-md py-2 px-6 shadow hover:shadow-purple-600 duration-700">
               Contribute
             </button>
           </a>
         </div>
       </div>
       <div className="flex-1 text-center mt-7 md:mt-0 lg:mt-0 lg:ml-3">
-        <img src={allhouse} className="w-3/4 mx-auto sm:w-80" />
+        <img src={allhouse} className="w-3/4 mx-auto sm:w-80" alt="All houses" fetchPriority="high"/>
       </div>
     </section>
   );
 };
+
+export default HeroSection;

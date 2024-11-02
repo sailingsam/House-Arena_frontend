@@ -1,6 +1,5 @@
-import React from "react";
 import "./MyProfileCard.css";
-import profiledp from "../../assets/profiledp.png";
+import profiledp from "../../assets/profiledp.webp";
 
 function MyProfileCard() {
   return (
@@ -8,11 +7,11 @@ function MyProfileCard() {
       <div className="flip-card-inner">
         <div className="flip-card-front">
           <div className="profile-image">
-            <img src={profiledp} alt="" className="rounded-full" />
+            <img src={profiledp} alt="saksham jain" className="rounded-full" />
           </div>
           <div className="text-gray-300 mb-3">Developer</div>
           <div className="name">Saksham Jain</div>
-          <div className="text-gray-300">Batch of '27 SST</div>
+          <div className="text-gray-300">Batch of &apos;27 SST</div>
         </div>
         <div className="flip-card-back flex items-center justify-center">
           <div className="Description">
@@ -20,7 +19,7 @@ function MyProfileCard() {
               CS UnderGrad at Scaler School of Technology, specializing
               in <br />Java & full-stack development.
               <br />
-              Beyond tech, I've successfully grown a Facebook page to 93k followers.
+              Beyond tech, I&apos;ve successfully grown a Facebook page to 93k followers.
             </p>
           </div>
         </div>

@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import HAwhiteblock from "../../assets/HAlogosvg/HAwhiteblock.svg";
 import { NavLink, useNavigate } from "react-router-dom";
 import HAblackblock from "../../assets/HAlogosvg/HAblackblock.svg";
@@ -8,7 +7,7 @@ import { useDispatch } from "react-redux";
 import { isTokenValid } from "../../utils/auth";
 import { setUser } from "../../redux/actions/authActions";
 
-export default () => {
+const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -42,7 +41,7 @@ export default () => {
           <img src={HAwhiteblock} width={450} />
           <div className=" mt-16 space-y-3">
             <h3 className="text-white text-3xl font-bold">
-              Unlock the Gateway to Your House's Glory!
+              Unlock the Gateway to Your House&apos;s Glory!
             </h3>
             <p className="text-gray-300">
               Welcome back! Log in to access your house details, track events,
@@ -128,7 +127,7 @@ export default () => {
                 htmlType="submit"
                 className="max-w-fit px-4 py-2 text-white font-medium bg-indigo-600 hover:bg-indigo-500 active:bg-indigo-600 rounded-full duration-150"
               >
-                Let's Dive In
+                Let&apos;s Dive In
               </Button>
               <div className="mt-2">
                 <NavLink
@@ -145,3 +144,5 @@ export default () => {
     </main>
   );
 };
+
+export default Login;

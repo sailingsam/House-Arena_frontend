@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchEvents } from "../../../redux/actions/eventsActions";
 import Loader from "../../../Components/Loader";
 import { BiSearch } from "react-icons/bi";
-import konglogo from "../../../assets/logos/transparentbg/13.svg";
-import leologo from "../../../assets/logos/transparentbg/14.svg";
-import phoenixlogo from "../../../assets/logos/transparentbg/15.svg";
-import tuskerlogo from "../../../assets/logos/transparentbg/16.svg";
+import konglogo from "../../../assets/logos/transparentbg/13.webp";
+import leologo from "../../../assets/logos/transparentbg/14.webp";
+import phoenixlogo from "../../../assets/logos/transparentbg/15.webp";
+import tuskerlogo from "../../../assets/logos/transparentbg/16.webp";
 import { updateHousePoints } from "../../../redux/actions/totalHousePointsActions";
 import {
   deleteEvent,
@@ -32,9 +32,9 @@ function formatDate(date) {
   return formattedDate.toLocaleDateString('en-GB'); 
 }
 
-export default () => {
+const EventsSection = () => {
   const dispatch = useDispatch();
-  const events = useSelector((state) => state.events.events);
+  const events = useSelector((state) => state.events.events || []);
   const loading = useSelector((state) => state.events.loading);
   const error = useSelector((state) => state.events.error);
 
@@ -45,7 +45,7 @@ export default () => {
 
   const reversedEvents = [...events].reverse();
   const filteredEvents = reversedEvents.filter((e) =>
-    e.name.toLowerCase().includes(searchTerm.toLowerCase())
+    e.name ? e.name.toLowerCase().includes(searchTerm.toLowerCase()) : false
   );
 
   const user = useSelector((state) => state.user.user);
@@ -58,12 +58,14 @@ export default () => {
       tusker: 0,
     };
 
-    events.forEach((event) => {
-      housePoints.kong += event.housePoints.kong;
-      housePoints.leo += event.housePoints.leo;
-      housePoints.phoenix += event.housePoints.phoenix;
-      housePoints.tusker += event.housePoints.tusker;
-    });
+    if (Array.isArray(events)) {
+      events.forEach((event) => {
+        housePoints.kong += event.housePoints.kong;
+        housePoints.leo += event.housePoints.leo;
+        housePoints.phoenix += event.housePoints.phoenix;
+        housePoints.tusker += event.housePoints.tusker;
+      });
+    }
 
     dispatch(updateHousePoints(housePoints));
   }, [events, dispatch]);
@@ -173,16 +175,16 @@ export default () => {
               <th className="py-3 px-6 font-bold text-lg">Event</th>
               <th className="py-3 px-6">Date</th>
               <th className="py-1 lg:px-5 text-center bg-blue-500">
-                <img src={konglogo} className="w-14 h-14 m-auto" />
+                <img src={konglogo} className="w-14 h-14 m-auto" alt="kong logo" />
               </th>
               <th className="py-1 lg:px-5 text-center bg-yellow-500">
-                <img src={leologo} className="w-14 h-14 m-auto" />
+                <img src={leologo} className="w-14 h-14 m-auto" alt="leo logo" />
               </th>
               <th className="py-1 lg:px-5 text-center bg-red-500">
-                <img src={phoenixlogo} className="w-14 h-14 m-auto" />
+                <img src={phoenixlogo} className="w-14 h-14 m-auto" alt="phoenix logo" />
               </th>
               <th className="py-1 lg:px-5 text-center bg-green-500">
-                <img src={tuskerlogo} className="w-14 h-14 m-auto" />
+                <img src={tuskerlogo} className="w-14 h-14 m-auto" alt="tusker logo" />
               </th>
               {user ? (
                 <th className="text-center">
@@ -342,3 +344,5 @@ export default () => {
     </div>
   );
 };
+
+export default EventsSection;

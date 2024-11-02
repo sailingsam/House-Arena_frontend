@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 
-export default () => {
+const LaunchSoon = () => {
   return (
     <section className="bg-whit">
       <div className="max-w-screen-xl mx-auto px-4 py-28 gap-12 text-gray-600 md:px-8">
@@ -36,10 +36,12 @@ export default () => {
           <img
             src="https://raw.githubusercontent.com/sidiDev/remote-assets/main/Safari%20(Big%20Sur)%20-%20Light.png"
             className="w-full shadow-lg rounded-lg border"
-            alt=""
+            alt="github"
           />
         </div>
       </div>
     </section>
   );
 };
+
+export default LaunchSoon;

@@ -1,10 +1,20 @@
-import konglogo from "../../../assets/logos/transparentbg/13.svg";
-import leologo from "../../../assets/logos/transparentbg/14.svg";
-import phoenixlogo from "../../../assets/logos/transparentbg/15.svg";
-import tuskerlogo from "../../../assets/logos/transparentbg/16.svg";
+import { useLayoutEffect } from "react";
+import konglogo from "../../../assets/logos/transparentbg/13.webp";
+import leologo from "../../../assets/logos/transparentbg/14.webp";
+import phoenixlogo from "../../../assets/logos/transparentbg/15.webp";
+import tuskerlogo from "../../../assets/logos/transparentbg/16.webp";
 import { NavLink } from "react-router-dom";
 
-export default () => {
+const HouseIntro = () => {
+  // This is to preload the images
+  useLayoutEffect(() => {
+    const images = [konglogo, leologo, phoenixlogo, tuskerlogo];
+    images.forEach((src) => {
+      const img = new Image();
+      img.src = src;
+    });
+  }, []);
+
   const houseData = [
     {
       name: "Tusker",
@@ -60,7 +70,7 @@ export default () => {
             Unity through Diversity:
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#fd5b5b] to-[#15ff00]">
               {" "}
-              SST's Houses
+              SST&apos;s Houses
             </span>
           </h3>
           <p className="mt-3 font-semibold">
@@ -88,7 +98,7 @@ export default () => {
                         }-500 fill-${
                           house.themecss.textGradient.split("-")[2]
                         }-500  group-hover:-skew-y-12 group-hover:skew-x-12`}
-                        fill="currentColor"
+                        // fill="currentColor"
                         src={house.logo}
                         alt={`${house.name} logo`}
                       />
@@ -142,3 +152,5 @@ export default () => {
     </section>
   );
 };
+
+export default HouseIntro;

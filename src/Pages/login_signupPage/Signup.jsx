@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 // import {SignupForm} from "./SignupForm";
 import SignupForm from "./SignupForm";
 
-export default () => {
+const Signup = () => {
   return (
     <main className="w-full flex">
       <div className="relative flex-1 hidden items-center justify-center h-screen bg-gray-900 lg:flex">
@@ -12,7 +12,7 @@ export default () => {
           <img src={HAwhiteblock} width={450} />
           <div className=" mt-16 space-y-3">
             <h3 className="text-white text-3xl font-bold">
-              Unlock the Gateway to Your House's Glory!
+              Unlock the Gateway to Your House&apos;s Glory!
             </h3>
             <p className="text-gray-300">
               Welcome aboard! Sign up to join your house, participate in events,
@@ -81,3 +81,5 @@ export default () => {
     </main>
   );
 };
+
+export default Signup;
