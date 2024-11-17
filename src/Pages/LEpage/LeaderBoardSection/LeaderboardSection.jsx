@@ -14,7 +14,7 @@ const LeaderboardSection = () => {
     2: bronzeMedal
   };
 
-  const MedalIcon = (index) => {
+  const MedalIcon = ({index}) => {
     const medalSrc = medalImages[index];
     return medalSrc ? <img src={medalSrc} className="w-6 h-6 inline ml-2" alt="medal" /> : null;
   };
